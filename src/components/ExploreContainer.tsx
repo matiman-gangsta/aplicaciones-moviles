@@ -5,7 +5,7 @@ import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle }
 function ExploreContainer() {
   return (
     <IonCard>
-      <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+      <img alt="Silhouette of mountains" src={"/public/nuevo.webp"} />
       <IonCardHeader>
         <IonCardTitle>Card Titleeeeee</IonCardTitle>
         <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
