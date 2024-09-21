@@ -15,7 +15,7 @@ function Examplee() {
         <IonHeader>
           <IonToolbar>
             <IonButtons slot="start">
-              <IonMenuButton></IonMenuButton>
+              <IonMenuButton>:v</IonMenuButton>
             </IonButtons>
             <IonTitle>Menu</IonTitle>
           </IonToolbar>
