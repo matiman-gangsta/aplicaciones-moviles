@@ -1,0 +1,36 @@
+/* RegistroEjercicios.css */
+
+ion-header {
+    background-color: #3880ff; /* Color del encabezado */
+    color: white; /* Color del texto */
+  }
+  
+  ion-toolbar {
+    --background: #3880ff;
+  }
+  
+  ion-content {
+    background-color: #f4f4f4; /* Color de fondo de la página */
+    padding: 20px; /* Espaciado alrededor del contenido */
+  }
+  
+  ion-item {
+    margin-bottom: 15px; /* Espacio entre los elementos */
+    background-color: #e8f0fe; /* Color de fondo de los elementos (más claro) */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+  ion-label {
+    font-weight: bold; /* Negrita para las etiquetas */
+  }
+  
+  ion-input {
+    --background: #ffffff5d; /* Color de fondo blanco para el input */
+    --border-radius: 5px; /* Bordes redondeados en el input */
+  }
+  
+  ion-button {
+    margin-top: 20px; /* Espacio por encima del botón */
+    background-color: #4caf50; /* Color del botón */
+  }
