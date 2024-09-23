@@ -6,13 +6,6 @@ import Example from '../components/Menu';
 
 const Tab2: React.FC = () => {
   return (
-    <IonSplitPane contentId="main-content">
-      {/* Aquí renderizamos el menú */}
-      <IonMenu contentId="main-content">
-        <Example />
-      </IonMenu>
-
-      {/* Aquí renderizamos el contenido principal */}
       <IonPage id="main-content">
         <IonHeader>
           <IonToolbar>
@@ -31,7 +24,6 @@ const Tab2: React.FC = () => {
           <ExploreContainerr />
         </IonContent>
       </IonPage>
-    </IonSplitPane>
   );
 };
 

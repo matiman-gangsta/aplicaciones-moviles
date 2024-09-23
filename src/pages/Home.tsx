@@ -6,7 +6,6 @@ import Example from '../components/Menu';
 const Home: React.FC = () => {
   return (
     <IonPage>
-      {/* Renderiza el componente Example que incluye el menú y el contenido */}
       <Example />
     </IonPage>
   );

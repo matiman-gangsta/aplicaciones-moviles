@@ -36,6 +36,15 @@ function Example() {
         </IonHeader>
         <IonContent className="ion-padding">
           Tap the button in the toolbar to open the menu.
+          <IonItem>
+            <Link to="/page1">Página 1</Link>
+          </IonItem>
+          <IonItem>
+            <Link to="/page2">Página 2</Link>
+          </IonItem>
+          <IonItem>
+            <Link to="/page3">Página 3</Link>
+          </IonItem>
         </IonContent>
       </IonPage>
     </>

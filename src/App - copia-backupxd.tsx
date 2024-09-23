@@ -4,7 +4,6 @@ import {
   IonApp,
   IonIcon,
   IonLabel,
-  IonMenu,
   IonRouterOutlet,
   IonSplitPane,
   IonTabBar,
@@ -20,8 +19,6 @@ import Tab3 from './pages/Tab3';
 import RegistroEjercicios from './pages/registroejercicios';
 import ListaPruebas from './pages/pruebas';
 import RegistroPersonal from './pages/registropersonal'; 
-import Recomendaciones from './pages/recomendaciones';
-import Explicaciones from './pages/explicaciones';
 import Example from './components/Menu';
 import page1 from './pages/page1';
 import Item1 from './pages/Page1_Item1';
@@ -64,9 +61,7 @@ const App: React.FC = () => {
     <IonApp>
       <IonReactRouter>
         <IonSplitPane contentId="main-content">
-          <IonMenu contentId="main-content">
           <Example />
-          </IonMenu>
           <IonTabs>
             <IonRouterOutlet id="main-content">
               <Route path="/tab1" component={Tab1} exact={true} />
@@ -87,8 +82,6 @@ const App: React.FC = () => {
               <Route path="/lista-pruebas" component={ListaPruebas} />
               <Redirect exact from="/" to="/tab1" />
               <Route path="/registro-personal" component={RegistroPersonal} exact={true} />
-              <Route path="/recomendaciones/:recomendaciones" component={Recomendaciones} />
-              <Route path="/explicaciones/:explicacion" component={Explicaciones} />
             </IonRouterOutlet>
 
             <IonTabBar slot="bottom">

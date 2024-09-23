@@ -12,7 +12,7 @@ import {
 } from '@ionic/react';
 
 const RegistroPersonal: React.FC = () => {
-  const [alias, setAlias] = useState<string>('Felipe'); // Cambiado aquí
+  const [alias, setAlias] = useState<string>('Felipe'); 
   const [antropometricos, setAntropometricos] = useState<string>('');
 
   const handleSave = () => {

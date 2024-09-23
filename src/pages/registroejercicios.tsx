@@ -9,13 +9,14 @@ import {
   IonInput,
   IonButton,
 } from '@ionic/react';
-import { useParams } from 'react-router-dom'; // Para obtener el ID de la prueba
-import { useHistory } from 'react-router-dom'; // Para redirigir después de agregar el ejercicio
+import { useParams, useHistory } from 'react-router-dom'; 
 
 interface Ejercicio {
   nombre: string;
   repeticiones: number;
   tipo: string;
+  explicacion: string; 
+  recomendaciones: string; 
 }
 
 interface Prueba {
@@ -30,20 +31,24 @@ interface RegistroEjerciciosProps {
 }
 
 const RegistroEjercicios: React.FC<RegistroEjerciciosProps> = ({ pruebas, setPruebas }) => {
-  const { idPrueba } = useParams<{ idPrueba: string }>(); // Obtenemos el ID de la prueba
+  const { idPrueba } = useParams<{ idPrueba: string }>(); 
   const history = useHistory();
+  
   const [nombreEjercicio, setNombreEjercicio] = useState<string>('');
   const [repeticiones, setRepeticiones] = useState<number | ''>(0);
   const [tipoEjercicio, setTipoEjercicio] = useState<string>('');
+  const [explicacion, setExplicacion] = useState<string>(''); 
+  const [recomendaciones, setRecomendaciones] = useState<string>(''); 
 
   const registrarEjercicio = () => {
     const ejercicio: Ejercicio = {
       nombre: nombreEjercicio,
       repeticiones: Number(repeticiones),
       tipo: tipoEjercicio,
+      explicacion, 
+      recomendaciones, 
     };
 
-    // Buscamos la prueba por ID y le agregamos el ejercicio
     const nuevasPruebas = pruebas.map(prueba => {
       if (prueba.id === Number(idPrueba)) {
         return { ...prueba, ejercicios: [...prueba.ejercicios, ejercicio] };
@@ -52,7 +57,15 @@ const RegistroEjercicios: React.FC<RegistroEjerciciosProps> = ({ pruebas, setPru
     });
 
     setPruebas(nuevasPruebas);
-    history.push('/lista-pruebas'); // Redirigimos de vuelta a la lista de pruebas
+    history.push('/lista-pruebas'); 
+  };
+
+  const irARecomendaciones = () => {
+    history.push(`/recomendaciones/${recomendaciones}`);
+  };
+
+  const irAExplicaciones = () => {
+    history.push(`/explicaciones/${explicacion}`);
   };
 
   return (
@@ -65,7 +78,7 @@ const RegistroEjercicios: React.FC<RegistroEjerciciosProps> = ({ pruebas, setPru
 
       <IonContent>
         <IonItem>
-          <IonLabel position="floating">Nombre del Ejercicio</IonLabel>
+          <IonLabel position="stacked">Nombre del Ejercicio</IonLabel>
           <IonInput
             type="text"
             value={nombreEjercicio}
@@ -74,7 +87,7 @@ const RegistroEjercicios: React.FC<RegistroEjerciciosProps> = ({ pruebas, setPru
         </IonItem>
 
         <IonItem>
-          <IonLabel position="floating">Repeticiones</IonLabel>
+          <IonLabel position="stacked">Repeticiones</IonLabel>
           <IonInput
             type="number"
             value={repeticiones}
@@ -83,7 +96,7 @@ const RegistroEjercicios: React.FC<RegistroEjerciciosProps> = ({ pruebas, setPru
         </IonItem>
 
         <IonItem>
-          <IonLabel position="floating">Tipo de Ejercicio</IonLabel>
+          <IonLabel position="stacked">Tipo de Ejercicio</IonLabel>
           <IonInput
             type="text"
             value={tipoEjercicio}
@@ -91,8 +104,34 @@ const RegistroEjercicios: React.FC<RegistroEjerciciosProps> = ({ pruebas, setPru
           />
         </IonItem>
 
+        <IonItem>
+          <IonLabel position="stacked">Explicación</IonLabel>
+          <IonInput
+            type="text"
+            value={explicacion}
+            onIonChange={(e: CustomEvent) => setExplicacion(e.detail.value!)}
+          />
+        </IonItem>
+
+        <IonItem>
+          <IonLabel position="stacked">Recomendaciones</IonLabel>
+          <IonInput
+            type="text"
+            value={recomendaciones}
+            onIonChange={(e: CustomEvent) => setRecomendaciones(e.detail.value!)}
+          />
+        </IonItem>
+
         <IonButton expand="full" onClick={registrarEjercicio}>
           Registrar Ejercicio
+        </IonButton>
+
+        <IonButton expand="full" onClick={irARecomendaciones}>
+          Ver Recomendaciones
+        </IonButton>
+
+        <IonButton expand="full" onClick={irAExplicaciones}>
+          Ver Explicaciones
         </IonButton>
       </IonContent>
     </>

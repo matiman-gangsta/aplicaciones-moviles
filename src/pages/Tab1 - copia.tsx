@@ -15,6 +15,10 @@ import './Tab1.css';
 
 const Tab1: React.FC = () => {
   return (
+    <IonSplitPane contentId="main-content">
+      <IonMenu contentId="main-content">
+        <Example />
+      </IonMenu>
       <IonPage id="main-content">
         <IonHeader>
           <IonToolbar>
@@ -33,6 +37,7 @@ const Tab1: React.FC = () => {
           <ExploreContainer />
         </IonContent>
       </IonPage>
+    </IonSplitPane>
   );
 };
 

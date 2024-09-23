@@ -12,7 +12,7 @@ import {
   IonIcon,
 } from '@ionic/react';
 import { addCircleOutline } from 'ionicons/icons';
-import { useHistory } from 'react-router-dom'; // Para navegar a la página de registro de ejercicios
+import { useHistory } from 'react-router-dom'; 
 
 interface Ejercicio {
   nombre: string;
@@ -29,22 +29,22 @@ interface Prueba {
 const ListaPruebas: React.FC = () => {
   const [pruebas, setPruebas] = useState<Prueba[]>([]);
   const [nombrePrueba, setNombrePrueba] = useState<string>('');
-  const history = useHistory(); // Hook para la navegación
+  const history = useHistory(); 
 
   const agregarPrueba = () => {
     if (nombrePrueba.trim()) {
       const nuevaPrueba: Prueba = {
         id: pruebas.length + 1,
         nombre: nombrePrueba,
-        ejercicios: [], // Inicialmente sin ejercicios
+        ejercicios: [], 
       };
       setPruebas([...pruebas, nuevaPrueba]);
-      setNombrePrueba(''); // Limpiar el campo de entrada después de agregar
+      setNombrePrueba(''); 
     }
   };
 
   const asignarEjercicios = (idPrueba: number) => {
-    history.push(`/registro-ejercicios/${idPrueba}`); // Navega a la página de registro de ejercicios con el id de la prueba
+    history.push(`/registro-ejercicios/${idPrueba}`); 
   };
 
   return (
