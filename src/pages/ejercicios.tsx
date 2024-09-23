@@ -15,7 +15,9 @@ import {
   IonLabel
 } from '@ionic/react';
 import Example from '../components/Menu';
-import { star } from 'ionicons/icons';
+import { star,home } from 'ionicons/icons';
+import Breadcrumb from '../components/breadcrumb';
+
 
 const Ejercicios: React.FC = () => {
   const [items, setItems] = useState([
@@ -37,9 +39,11 @@ const Ejercicios: React.FC = () => {
               <IonMenuButton />
             </IonButtons>
             <IonTitle>Ejercicios</IonTitle>
+            <IonIcon icon={home} slot="start" />
           </IonToolbar>
         </IonHeader>
         <IonContent className="ion-padding">
+        <Breadcrumb/>
           <IonList>
             {items.map((item, index) => (
               <IonItem key={index} routerLink={item.route}>

@@ -16,6 +16,8 @@ import {
 } from '@ionic/react';
 import Example from '../components/Menu';
 import { star } from 'ionicons/icons';
+import Breadcrumb from '../components/breadcrumb';
+
 
 const HistorialEvaluaciones: React.FC = () => {
   const [items, setItems] = useState([
@@ -40,6 +42,7 @@ const HistorialEvaluaciones: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <IonContent className="ion-padding">
+        <Breadcrumb/> 
           <IonList>
             {items.map((item, index) => (
               <IonItem key={index} routerLink={item.route}>

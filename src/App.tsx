@@ -28,7 +28,6 @@ import HistorialEvaluaciones from './pages/historial';
 import Example from './components/Menu';
 import page1 from './pages/page1';
 import ejercicios from "./pages/ejercicios"
-
 import Item1 from './pages/Page1_Item1';
 
 /* Core CSS required for Ionic components to work properly */
@@ -69,9 +68,10 @@ const App: React.FC = () => {
     <IonApp>
       <IonReactRouter>
         <IonSplitPane contentId="main-content">
-          <IonMenu contentId="main-content">
+
           <Example />
-          </IonMenu>
+
+
           <IonTabs>
             <IonRouterOutlet id="main-content">
               <Route path="/tab1" component={Tab1} exact={true} />

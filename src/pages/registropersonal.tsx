@@ -10,6 +10,8 @@ import {
   IonButton,
   IonTextarea
 } from '@ionic/react';
+import Breadcrumb from '../components/breadcrumb';
+
 
 const RegistroPersonal: React.FC = () => {
   const [alias, setAlias] = useState<string>('Felipe'); 
@@ -31,6 +33,7 @@ const RegistroPersonal: React.FC = () => {
       </IonHeader>
 
       <IonContent className="ion-padding">
+      <Breadcrumb/> 
         <IonItem>
           <IonLabel position="stacked">Alias:</IonLabel>
           <IonInput

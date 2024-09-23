@@ -1,6 +1,8 @@
 import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import './explicaciones.css'; // Asegúrate de crear este archivo CSS
+import './explicaciones.css'; 
+import Breadcrumb from '../components/breadcrumb';
+
 
 const Explicaciones: React.FC = () => {
   return (
@@ -11,6 +13,7 @@ const Explicaciones: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="centrar-texto">
+      <Breadcrumb/>
         <h2>En esta pagina se mostrara en que consiste el ejercicio seleccionado</h2>
       </IonContent>
     </IonPage>

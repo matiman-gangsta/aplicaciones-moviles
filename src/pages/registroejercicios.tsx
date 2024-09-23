@@ -10,6 +10,8 @@ import {
   IonButton,
 } from '@ionic/react';
 import { useParams, useHistory } from 'react-router-dom'; 
+import Breadcrumb from '../components/breadcrumb';
+
 
 interface Ejercicio {
   nombre: string;
@@ -77,6 +79,7 @@ const RegistroEjercicios: React.FC<RegistroEjerciciosProps> = ({ pruebas, setPru
       </IonHeader>
 
       <IonContent>
+      <Breadcrumb/> 
         <IonItem>
           <IonLabel position="stacked">Nombre del Ejercicio</IonLabel>
           <IonInput

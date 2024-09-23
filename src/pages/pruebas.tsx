@@ -13,6 +13,8 @@ import {
 } from '@ionic/react';
 import { addCircleOutline } from 'ionicons/icons';
 import { useHistory } from 'react-router-dom'; 
+import Breadcrumb from '../components/breadcrumb';
+
 
 interface Ejercicio {
   nombre: string;
@@ -56,6 +58,7 @@ const ListaPruebas: React.FC = () => {
       </IonHeader>
 
       <IonContent>
+      <Breadcrumb/> 
         <IonItem>
           <IonLabel position="floating">Nombre de la Prueba</IonLabel>
           <IonInput
