@@ -1,22 +1,19 @@
 import React from 'react';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import './explicaciones.css'; // Asegúrate de crear este archivo CSS
 
-interface Explicaciones {
-  explicacion: string;
-}
-
-const Explicaciones: React.FC<Explicaciones> = ({ explicacion }) => {
+const Explicaciones: React.FC = () => {
   return (
-    <>
+    <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Explicaciones</IonTitle>
+          <IonTitle>En que consiste</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-        <p>{explicacion}</p>
+      <IonContent className="centrar-texto">
+        <h2>En esta pagina se mostrara en que consiste el ejercicio seleccionado</h2>
       </IonContent>
-    </>
+    </IonPage>
   );
 };
 

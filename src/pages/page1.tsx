@@ -22,10 +22,10 @@ import { star } from 'ionicons/icons';
 
   const Page1: React.FC = () => {
   const [items, setItems] = useState([
-    { name: "Item 1", description: "This is the first item", route: "/page1/item1" },
-    { name: "Item 2", description: "This is the second item", route: "/page1/item2" },
-    { name: "Item 3", description: "This is the third item", route: "/page1/item3" },
-    { name: "Item 4", description: "This is the fourth item", route: "/page1/item4" },
+    { name: "Prueba 1", description: "Descripcion de la prueba", route: "/page1/item1" },
+    { name: "Prueba 2", description: "Descripcion de la prueba", route: "/page1/item2" },
+    { name: "Prueba 3", description: "Descripcion de la prueba", route: "/page1/item3" },
+    { name: "Prueba 4", description: "Descripcion de la prueba", route: "/page1/item4" },
   ]);
   const [newItemName, setNewItemName] = useState<string>('');
   const [newItemDescription, setNewItemDescription] = useState<string>('');
@@ -56,7 +56,7 @@ import { star } from 'ionicons/icons';
             <IonButtons slot="start">
               <IonMenuButton />
             </IonButtons>
-            <IonTitle>Page 1</IonTitle>
+            <IonTitle>Pruebas fisicas</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonContent className="ion-padding">
@@ -74,14 +74,14 @@ import { star } from 'ionicons/icons';
 
           <IonItem>
             <IonInput
-              placeholder="Nombre del nuevo item"
+              placeholder="Nombre de la prueba"
               value={newItemName}
               onIonChange={(e: CustomEvent) => setNewItemName(e.detail.value!)}
             />
           </IonItem>
           <IonItem>
             <IonInput
-              placeholder="Descripción del nuevo item"
+              placeholder="Descripción de la prueba"
               value={newItemDescription}
               onIonChange={(e: CustomEvent) => setNewItemDescription(e.detail.value!)}
             />

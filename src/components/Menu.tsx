@@ -1,8 +1,10 @@
 import React from 'react';
-import { IonButtons, IonContent, IonHeader, IonItem, IonMenu, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import { Link } from 'react-router-dom';
+import { IonButtons, IonButton, IonContent, IonHeader, IonItem, IonMenu, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { useHistory } from 'react-router-dom';
 
 function Example() {
+  const history = useHistory();
+
   return (
     <>
       <IonMenu contentId="main-content">
@@ -12,15 +14,20 @@ function Example() {
           </IonToolbar>
         </IonHeader>
         <IonContent className="ion-padding">
-          {/* Agregamos tres textos con enlaces a otras páginas */}
           <IonItem>
-            <Link to="/page1">Página 1</Link>
+            <IonButton expand="full" onClick={() => history.push('/page1')}>
+              Página 1
+            </IonButton>
           </IonItem>
           <IonItem>
-            <Link to="/page2">Página 2</Link>
+            <IonButton expand="full" onClick={() => history.push('/page2')}>
+              Página 2
+            </IonButton>
           </IonItem>
           <IonItem>
-            <Link to="/page3">Página 3</Link>
+            <IonButton expand="full" onClick={() => history.push('/page3')}>
+              Página 3
+            </IonButton>
           </IonItem>
         </IonContent>
       </IonMenu>
@@ -37,13 +44,19 @@ function Example() {
         <IonContent className="ion-padding">
           Tap the button in the toolbar to open the menu.
           <IonItem>
-            <Link to="/page1">Página 1</Link>
+            <IonButton expand="full" onClick={() => history.push('/page1')}>
+              Página 1
+            </IonButton>
           </IonItem>
           <IonItem>
-            <Link to="/page2">Página 2</Link>
+            <IonButton expand="full" onClick={() => history.push('/page2')}>
+              Página 2
+            </IonButton>
           </IonItem>
           <IonItem>
-            <Link to="/page3">Página 3</Link>
+            <IonButton expand="full" onClick={() => history.push('/page3')}>
+              Página 3
+            </IonButton>
           </IonItem>
         </IonContent>
       </IonPage>

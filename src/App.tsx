@@ -22,8 +22,13 @@ import ListaPruebas from './pages/pruebas';
 import RegistroPersonal from './pages/registropersonal'; 
 import Recomendaciones from './pages/recomendaciones';
 import Explicaciones from './pages/explicaciones';
+import Login from './pages/login';
+import feedback from './pages/feedback';
+import HistorialEvaluaciones from './pages/historial';
 import Example from './components/Menu';
 import page1 from './pages/page1';
+import ejercicios from "./pages/ejercicios"
+
 import Item1 from './pages/Page1_Item1';
 
 /* Core CSS required for Ionic components to work properly */
@@ -72,8 +77,8 @@ const App: React.FC = () => {
               <Route path="/tab1" component={Tab1} exact={true} />
               <Route path="/tab2" component={Tab2} exact={true} />
               <Route path="/tab3" component={Tab3} exact={true} />
-              <Route path="/page1" exact component={page1} />
-              <Route path="/page1/item1" exact component={Item1} />
+              <Route path="/page1" component={page1} />
+              <Route path="/page1/item1" component={Item1} />
               <Route 
                 path="/registro-ejercicios/:idPrueba" 
                 render={(props) => (
@@ -87,8 +92,14 @@ const App: React.FC = () => {
               <Route path="/lista-pruebas" component={ListaPruebas} />
               <Redirect exact from="/" to="/tab1" />
               <Route path="/registro-personal" component={RegistroPersonal} exact={true} />
-              <Route path="/recomendaciones/:recomendaciones" component={Recomendaciones} />
-              <Route path="/explicaciones/:explicacion" component={Explicaciones} />
+              <Route path="/recomendaciones" component={Recomendaciones} />
+              <Route path="/explicaciones" component={Explicaciones} />
+              <Route path="/login" component={Login} exact={true} />
+              <Route path="/ejercicios" component={ejercicios} exact={true} />
+              <Route path="/feedback" component={feedback} exact={true} />
+              <Route path="/historial" component={HistorialEvaluaciones} exact={true} />
+
+
             </IonRouterOutlet>
 
             <IonTabBar slot="bottom">

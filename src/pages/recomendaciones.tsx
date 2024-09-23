@@ -1,23 +1,21 @@
 import React from 'react';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import './recomendaciones.css'; 
 
-interface Recomendaciones {
-  recomendaciones: string;
-}
-
-const Recomendaciones: React.FC<Recomendaciones> = ({ recomendaciones }) => {
+const Recomendaciones: React.FC = () => {
   return (
-    <>
+    <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonTitle>Recomendaciones</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-        <p>{recomendaciones}</p>
+      <IonContent className="centrar-texto">
+        <h2>En esta página se mostrarán las recomendaciones para el ejercicio seleccionado</h2>
       </IonContent>
-    </>
+    </IonPage>
   );
 };
 
 export default Recomendaciones;
+
