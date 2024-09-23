@@ -18,7 +18,10 @@ import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
 import RegistroEjercicios from './pages/registroejercicios';
 import ListaPruebas from './pages/pruebas';
+import RegistroPersonal from './pages/registropersonal'; // Importa el nuevo componente
 import Example from './components/Menu';
+import page1 from './pages/page1';
+import Item1 from './pages/Page1_Item1';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -67,6 +70,8 @@ const App: React.FC = () => {
               <Route path="/tab1" component={Tab1} exact={true} />
               <Route path="/tab2" component={Tab2} exact={true} />
               <Route path="/tab3" component={Tab3} exact={true} />
+              <Route path="/page1" exact component={page1} />
+              <Route path="/page1/item1" exact component={Item1} />
               <Route 
                 path="/registro-ejercicios/:idPrueba" 
                 render={(props) => (
@@ -79,6 +84,7 @@ const App: React.FC = () => {
               />
               <Route path="/lista-pruebas" component={ListaPruebas} />
               <Redirect exact from="/" to="/tab1" />
+              <Route path="/registro-personal" component={RegistroPersonal} exact={true} />
             </IonRouterOutlet>
 
             <IonTabBar slot="bottom">
