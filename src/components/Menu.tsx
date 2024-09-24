@@ -31,9 +31,9 @@ const Example: React.FC<{children: React.ReactNode}> = ({ children }) => {
             </IonButton>
           </IonItem>
           <IonItem>
-            <IonRouterLink routerLink="/registro-pruebas" style={{ width: '100%' }}>
+            <IonRouterLink routerLink="/registro-ejercicios/1" style={{ width: '100%' }}>
               <IonButton expand="full">
-                Registro pruebas
+                Registro ejercicios
               </IonButton>
             </IonRouterLink>
           </IonItem>

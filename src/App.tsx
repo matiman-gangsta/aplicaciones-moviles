@@ -18,7 +18,6 @@ import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
 import RegistroEjercicios from './pages/registroejercicios';
-import ListaPruebas from './pages/pruebas';
 import RegistroPersonal from './pages/registropersonal'; 
 import Recomendaciones from './pages/recomendaciones';
 import Explicaciones from './pages/explicaciones';
@@ -68,7 +67,7 @@ const App: React.FC = () => {
     <IonApp>
       <IonReactRouter>
         <IonSplitPane contentId="main-content">   
-          <Example />
+          <Example children={undefined} />
           <IonTabs>
             <IonRouterOutlet id="main-content">
               <Route path="/tab1" component={Tab1} exact={true} />
@@ -86,7 +85,7 @@ const App: React.FC = () => {
                   />
                 )} 
               />
-              <Route path="/lista-pruebas" component={ListaPruebas} />
+
               <Redirect exact from="/" to="/login" />
               <Route path="/registro-personal" component={RegistroPersonal} exact={true} />
               <Route path="/recomendaciones" component={Recomendaciones} />

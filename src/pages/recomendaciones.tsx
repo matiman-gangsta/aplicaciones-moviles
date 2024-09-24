@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonIcon } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonIcon, IonButtons, IonMenuButton } from '@ionic/react';
 import './recomendaciones.css'; 
 import Breadcrumb from '../components/breadcrumb';
 import { home } from 'ionicons/icons';
@@ -11,6 +11,9 @@ const Recomendaciones: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
+        <IonButtons slot="start">
+              <IonMenuButton />
+              </IonButtons>
         <IonIcon icon={home} slot="start" />
           <IonTitle>Recomendaciones</IonTitle>
         </IonToolbar>

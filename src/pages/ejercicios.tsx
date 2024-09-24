@@ -30,7 +30,7 @@ const Ejercicios: React.FC = () => {
   return (
     <IonSplitPane contentId="main-content">
       <IonMenu contentId="main-content">
-        <Example />
+        <Example children={undefined} />
       </IonMenu>
       <IonPage>
         <IonHeader>

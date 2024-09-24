@@ -8,7 +8,9 @@ import {
   IonLabel,
   IonInput,
   IonButton,
-  IonIcon
+  IonIcon,
+  IonButtons,
+  IonMenuButton
 } from '@ionic/react';
 import { useParams, useHistory } from 'react-router-dom'; 
 import Breadcrumb from '../components/breadcrumb';
@@ -61,7 +63,7 @@ const RegistroEjercicios: React.FC<RegistroEjerciciosProps> = ({ pruebas, setPru
     });
 
     setPruebas(nuevasPruebas);
-    history.push('/lista-pruebas'); 
+    history.push('/page1'); 
   };
 
   const irARecomendaciones = () => {
@@ -76,6 +78,9 @@ const RegistroEjercicios: React.FC<RegistroEjerciciosProps> = ({ pruebas, setPru
     <>
       <IonHeader>
         <IonToolbar>
+        <IonButtons slot="start">
+              <IonMenuButton />
+              </IonButtons>
         <IonIcon icon={home} slot="start" />
           <IonTitle>Registrar Ejercicio</IonTitle>
         </IonToolbar>
