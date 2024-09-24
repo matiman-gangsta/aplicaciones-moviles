@@ -15,8 +15,6 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 import { ellipse, square, triangle } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
 import RegistroEjercicios from './pages/registroejercicios';
 import RegistroPersonal from './pages/registropersonal'; 
 import Recomendaciones from './pages/recomendaciones';
@@ -71,8 +69,6 @@ const App: React.FC = () => {
           <IonTabs>
             <IonRouterOutlet id="main-content">
               <Route path="/tab1" component={Tab1} exact={true} />
-              <Route path="/tab2" component={Tab2} exact={true} />
-              <Route path="/tab3" component={Tab3} exact={true} />
               <Route path="/page1" component={page1} />
               <Route path="/page1_item1" component={Item1} />
               <Route 
@@ -101,15 +97,7 @@ const App: React.FC = () => {
             <IonTabBar slot="bottom">
               <IonTabButton tab="tab1" href="/tab1">
                 <IonIcon aria-hidden="true" icon={triangle} />
-                <IonLabel>Tab 1</IonLabel>
-              </IonTabButton>
-              <IonTabButton tab="tab2" href="/tab2">
-                <IonIcon aria-hidden="true" icon={ellipse} />
-                <IonLabel>Tab 2</IonLabel>
-              </IonTabButton>
-              <IonTabButton tab="tab3" href="/tab3">
-                <IonIcon aria-hidden="true" icon={square} />
-                <IonLabel>Tab 3</IonLabel>
+                <IonLabel>Home</IonLabel>
               </IonTabButton>
             </IonTabBar>
           </IonTabs>
