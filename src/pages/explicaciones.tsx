@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonIcon } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonIcon, IonMenuButton,IonButtons } from '@ionic/react';
 import './explicaciones.css'; 
 import Breadcrumb from '../components/breadcrumb';
 import { home } from 'ionicons/icons'; 
@@ -10,6 +10,9 @@ const Explicaciones: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
+          <IonButtons slot="start">
+            <IonMenuButton/>
+          </IonButtons>
         <IonIcon icon={home} slot="start" />
           <IonTitle>En que consiste</IonTitle>
         </IonToolbar>

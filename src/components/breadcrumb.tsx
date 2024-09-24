@@ -13,7 +13,7 @@ const Breadcrumb: React.FC = () => {
     return (
         <IonBreadcrumbs>
             <IonBreadcrumb>
-                <Link to="/">Inicio</Link>
+                <Link to="tab1">Inicio</Link>
             </IonBreadcrumb>
             {pathSegments.map((segment, index) => {
                 const path = `/${pathSegments.slice(0, index + 1).join('/')}`;

@@ -49,16 +49,13 @@ import Breadcrumb from '../components/breadcrumb';
 
   return (
     <IonSplitPane contentId="main-content">
-      <IonMenu contentId="main-content">
-        <Example />
-      </IonMenu>
       <IonPage>
         <IonHeader>
           <IonToolbar>
-          <IonIcon icon={home} slot="start" />
             <IonButtons slot="start">
               <IonMenuButton />
-            </IonButtons>
+              </IonButtons>
+              <IonIcon icon={home} slot="start"/>
             <IonTitle>Pruebas fisicas</IonTitle>
           </IonToolbar>
         </IonHeader>

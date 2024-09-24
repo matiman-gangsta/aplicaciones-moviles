@@ -23,7 +23,7 @@ const Tab1: React.FC = () => {
         <IonHeader>
           <IonToolbar>
             <IonButtons slot="start">
-              <IonMenuButton />
+              <IonMenuButton/>
             </IonButtons>
             <IonTitle>Tab 1</IonTitle>
             <IonIcon icon={home} slot="start" />
@@ -36,7 +36,6 @@ const Tab1: React.FC = () => {
               <IonTitle size="large">Tab 1</IonTitle>
             </IonToolbar>
           </IonHeader>
-          <ExploreContainer />
         </IonContent>
       </IonPage>
   );

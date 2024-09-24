@@ -30,15 +30,14 @@ const HistorialEvaluaciones: React.FC = () => {
   return (
     <IonSplitPane contentId="main-content">
       <IonMenu contentId="main-content">
-        <Example />
       </IonMenu>
       <IonPage>
         <IonHeader>
           <IonToolbar>
-          <IonIcon icon={home} slot="start" />
             <IonButtons slot="start">
               <IonMenuButton />
             </IonButtons>
+            <IonIcon icon={home} slot="start" />
             <IonTitle>Historial de Evaluaciones</IonTitle>
           </IonToolbar>
         </IonHeader>

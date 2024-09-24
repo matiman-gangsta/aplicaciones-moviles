@@ -2,17 +2,22 @@ import './ExploreContainer.css';
 import React from 'react';
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
 
-function ExploreContainer() {
+interface ExploreContainerProps {
+  alias: string;
+}
+
+const ExploreContainer: React.FC<ExploreContainerProps> = ({ alias }) => {
   return (
     <IonCard>
       <img alt="Silhouette of mountains" src={"/public/nuevo.webp"} />
       <IonCardHeader>
-        <IonCardTitle>Card Titleeeeee</IonCardTitle>
-        <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+        <IonCardTitle>{alias}</IonCardTitle>
+        <IonCardSubtitle>Estudiante DUOC UC</IonCardSubtitle>
       </IonCardHeader>
 
-      <IonCardContent>Here's a small text description for the card content. Nothing more, nothing less.</IonCardContent>
+      <IonCardContent>(Indicadores antropométricos, ejercicios con mayor desempeño)</IonCardContent>
     </IonCard>
   );
 }
+
 export default ExploreContainer;

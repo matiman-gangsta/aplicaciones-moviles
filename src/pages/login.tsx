@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonInput, IonButton, IonItem, IonLabel, IonText } from '@ionic/react';
 import './login.css'; 
-import Breadcrumb from '../components/breadcrumb';
-
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState<string>('');
@@ -16,7 +14,6 @@ const Login: React.FC = () => {
   return (
     <IonPage>
       <IonContent className="ion-padding login-content">
-      <Breadcrumb/> 
         <div className="login-container">
           <h2 className="login-title">Ingresar</h2>
           <IonItem>

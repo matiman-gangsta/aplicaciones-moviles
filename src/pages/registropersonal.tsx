@@ -9,11 +9,13 @@ import {
   IonInput,
   IonButton,
   IonTextarea,
-  IonIcon
+  IonIcon,
+  IonMenuButton,
+  IonButtons
 } from '@ionic/react';
 import Breadcrumb from '../components/breadcrumb';
 import { home } from 'ionicons/icons';
-
+import ExploreContainer from '../components/ExploreContainer';
 
 const RegistroPersonal: React.FC = () => {
   const [alias, setAlias] = useState<string>('Felipe'); 
@@ -28,15 +30,16 @@ const RegistroPersonal: React.FC = () => {
     <>
       <IonHeader>
         <IonToolbar>
-        <IonIcon icon={home} slot="start" />
-          <IonTitle>
-            Registro personal
-          </IonTitle>
+          <IonButtons slot="start">
+            <IonMenuButton />
+          </IonButtons>
+          <IonIcon icon={home} slot="start" />
+          <IonTitle>Registro personal</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent className="ion-padding">
-      <Breadcrumb/> 
+        <Breadcrumb />
         <IonItem>
           <IonLabel position="stacked">Alias:</IonLabel>
           <IonInput
@@ -58,6 +61,8 @@ const RegistroPersonal: React.FC = () => {
         <IonButton expand="full" onClick={handleSave}>
           Guardar
         </IonButton>
+        <br />
+        <ExploreContainer alias={alias} />
       </IonContent>
     </>
   );
