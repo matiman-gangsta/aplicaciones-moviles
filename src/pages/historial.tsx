@@ -15,7 +15,7 @@ import {
   IonLabel
 } from '@ionic/react';
 import Example from '../components/Menu';
-import { star } from 'ionicons/icons';
+import { star,home } from 'ionicons/icons';
 import Breadcrumb from '../components/breadcrumb';
 
 
@@ -35,6 +35,7 @@ const HistorialEvaluaciones: React.FC = () => {
       <IonPage>
         <IonHeader>
           <IonToolbar>
+          <IonIcon icon={home} slot="start" />
             <IonButtons slot="start">
               <IonMenuButton />
             </IonButtons>

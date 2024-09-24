@@ -1,7 +1,9 @@
 import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonIcon } from '@ionic/react';
 import './feedback.css'; 
 import Breadcrumb from '../components/breadcrumb';
+import { home } from 'ionicons/icons'; 
+
 
 
 const Feedback: React.FC = () => {
@@ -9,6 +11,7 @@ const Feedback: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
+        <IonIcon icon={home} slot="start" />
           <IonTitle>Feedback del Entrenamiento</IonTitle>
         </IonToolbar>
       </IonHeader>

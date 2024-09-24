@@ -18,7 +18,7 @@ import {
   IonToast
 } from '@ionic/react';
 import Example from '../components/Menu';
-import { star } from 'ionicons/icons';
+import { star,home } from 'ionicons/icons';
 import Breadcrumb from '../components/breadcrumb';
 
 
@@ -55,6 +55,7 @@ import Breadcrumb from '../components/breadcrumb';
       <IonPage>
         <IonHeader>
           <IonToolbar>
+          <IonIcon icon={home} slot="start" />
             <IonButtons slot="start">
               <IonMenuButton />
             </IonButtons>

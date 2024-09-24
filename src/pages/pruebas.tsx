@@ -11,7 +11,7 @@ import {
   IonButton,
   IonIcon,
 } from '@ionic/react';
-import { addCircleOutline } from 'ionicons/icons';
+import { addCircleOutline, home } from 'ionicons/icons';
 import { useHistory } from 'react-router-dom'; 
 import Breadcrumb from '../components/breadcrumb';
 
@@ -53,6 +53,7 @@ const ListaPruebas: React.FC = () => {
     <>
       <IonHeader>
         <IonToolbar>
+        <IonIcon icon={home} slot="start" />
           <IonTitle>Lista de Pruebas</IonTitle>
         </IonToolbar>
       </IonHeader>

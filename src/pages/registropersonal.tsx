@@ -8,9 +8,11 @@ import {
   IonLabel,
   IonInput,
   IonButton,
-  IonTextarea
+  IonTextarea,
+  IonIcon
 } from '@ionic/react';
 import Breadcrumb from '../components/breadcrumb';
+import { home } from 'ionicons/icons';
 
 
 const RegistroPersonal: React.FC = () => {
@@ -26,6 +28,7 @@ const RegistroPersonal: React.FC = () => {
     <>
       <IonHeader>
         <IonToolbar>
+        <IonIcon icon={home} slot="start" />
           <IonTitle>
             Registro personal
           </IonTitle>

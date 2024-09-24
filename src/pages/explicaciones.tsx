@@ -1,7 +1,8 @@
 import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonIcon } from '@ionic/react';
 import './explicaciones.css'; 
 import Breadcrumb from '../components/breadcrumb';
+import { home } from 'ionicons/icons'; 
 
 
 const Explicaciones: React.FC = () => {
@@ -9,6 +10,7 @@ const Explicaciones: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
+        <IonIcon icon={home} slot="start" />
           <IonTitle>En que consiste</IonTitle>
         </IonToolbar>
       </IonHeader>

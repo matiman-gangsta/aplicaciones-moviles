@@ -8,9 +8,11 @@ import {
   IonLabel,
   IonInput,
   IonButton,
+  IonIcon
 } from '@ionic/react';
 import { useParams, useHistory } from 'react-router-dom'; 
 import Breadcrumb from '../components/breadcrumb';
+import { home } from 'ionicons/icons';
 
 
 interface Ejercicio {
@@ -74,6 +76,7 @@ const RegistroEjercicios: React.FC<RegistroEjerciciosProps> = ({ pruebas, setPru
     <>
       <IonHeader>
         <IonToolbar>
+        <IonIcon icon={home} slot="start" />
           <IonTitle>Registrar Ejercicio</IonTitle>
         </IonToolbar>
       </IonHeader>
