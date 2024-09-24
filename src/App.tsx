@@ -87,14 +87,13 @@ const App: React.FC = () => {
               />
 
               <Redirect exact from="/" to="/login" />
-              <Route path="/registro-personal" component={RegistroPersonal} exact={true} />
               <Route path="/recomendaciones" component={Recomendaciones} />
               <Route path="/explicaciones" component={Explicaciones} />
               <Route path="/login" component={Login} exact={true} />
               <Route path="/ejercicios" component={ejercicios} exact={true} />
               <Route path="/feedback" component={feedback} exact={true} />
               <Route path="/historial" component={HistorialEvaluaciones} exact={true} />
-
+              <Route path="/registro-personal" component={RegistroPersonal} exact={true} />
 
             </IonRouterOutlet>
 

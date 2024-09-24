@@ -11,7 +11,8 @@ import {
   IonTextarea,
   IonIcon,
   IonMenuButton,
-  IonButtons
+  IonButtons,
+  IonPage
 } from '@ionic/react';
 import Breadcrumb from '../components/breadcrumb';
 import { home } from 'ionicons/icons';
@@ -28,6 +29,7 @@ const RegistroPersonal: React.FC = () => {
 
   return (
     <>
+    <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
@@ -64,6 +66,7 @@ const RegistroPersonal: React.FC = () => {
         <br />
         <ExploreContainer alias={alias} />
       </IonContent>
+      </IonPage>
     </>
   );
 };

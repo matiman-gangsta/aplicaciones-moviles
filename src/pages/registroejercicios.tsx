@@ -10,7 +10,8 @@ import {
   IonButton,
   IonIcon,
   IonButtons,
-  IonMenuButton
+  IonMenuButton,
+  IonPage
 } from '@ionic/react';
 import { useParams, useHistory } from 'react-router-dom'; 
 import Breadcrumb from '../components/breadcrumb';
@@ -76,6 +77,7 @@ const RegistroEjercicios: React.FC<RegistroEjerciciosProps> = ({ pruebas, setPru
 
   return (
     <>
+    <IonPage>
       <IonHeader>
         <IonToolbar>
         <IonButtons slot="start">
@@ -145,6 +147,7 @@ const RegistroEjercicios: React.FC<RegistroEjerciciosProps> = ({ pruebas, setPru
           Ver Explicaciones
         </IonButton>
       </IonContent>
+      </IonPage>
     </>
   );
 };
