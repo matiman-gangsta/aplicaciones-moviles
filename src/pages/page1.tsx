@@ -24,7 +24,7 @@ import Breadcrumb from '../components/breadcrumb';
 
   const Page1: React.FC = () => {
   const [items, setItems] = useState([
-    { name: "Prueba 1", description: "Descripcion de la prueba", route: "/page1/item1" },
+    { name: "Prueba 1", description: "Descripcion de la prueba", route: "/page1_item1" },
     { name: "Prueba 2", description: "Descripcion de la prueba", route: "/page1/item2" },
     { name: "Prueba 3", description: "Descripcion de la prueba", route: "/page1/item3" },
     { name: "Prueba 4", description: "Descripcion de la prueba", route: "/page1/item4" },

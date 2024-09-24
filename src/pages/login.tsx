@@ -39,7 +39,7 @@ const Login: React.FC = () => {
             />
           </IonItem>
 
-          <IonButton expand="block" onClick={handleLogin}>
+          <IonButton expand="block" onClick={handleLogin} routerLink='/tab1'>
             Ingresar
           </IonButton>
 

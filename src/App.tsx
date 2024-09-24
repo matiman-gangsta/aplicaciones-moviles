@@ -67,18 +67,15 @@ const App: React.FC = () => {
   return (
     <IonApp>
       <IonReactRouter>
-        <IonSplitPane contentId="main-content">
-
+        <IonSplitPane contentId="main-content">   
           <Example />
-
-
           <IonTabs>
             <IonRouterOutlet id="main-content">
               <Route path="/tab1" component={Tab1} exact={true} />
               <Route path="/tab2" component={Tab2} exact={true} />
               <Route path="/tab3" component={Tab3} exact={true} />
               <Route path="/page1" component={page1} />
-              <Route path="/page1/item1" component={Item1} />
+              <Route path="/page1_item1" component={Item1} />
               <Route 
                 path="/registro-ejercicios/:idPrueba" 
                 render={(props) => (
@@ -90,7 +87,7 @@ const App: React.FC = () => {
                 )} 
               />
               <Route path="/lista-pruebas" component={ListaPruebas} />
-              <Redirect exact from="/" to="/tab1" />
+              <Redirect exact from="/" to="/login" />
               <Route path="/registro-personal" component={RegistroPersonal} exact={true} />
               <Route path="/recomendaciones" component={Recomendaciones} />
               <Route path="/explicaciones" component={Explicaciones} />
