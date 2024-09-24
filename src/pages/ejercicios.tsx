@@ -28,11 +28,7 @@ const Ejercicios: React.FC = () => {
   ]);
   
   return (
-    <IonSplitPane contentId="main-content">
-      <IonMenu contentId="main-content">
-        <Example children={undefined} />
-      </IonMenu>
-      <IonPage>
+      <IonPage id="main-content">
         <IonHeader>
           <IonToolbar>
             <IonButtons slot="start">
@@ -57,7 +53,6 @@ const Ejercicios: React.FC = () => {
           </IonList>
         </IonContent>
       </IonPage>
-    </IonSplitPane>
   );
 };
 

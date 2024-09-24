@@ -11,20 +11,24 @@ import {
   IonTitle, 
   IonToolbar, 
   IonRouterLink, 
-  IonIcon 
+  IonIcon,
+  useIonRouter, 
+  IonMenuToggle
 } from '@ionic/react';
 import { home } from 'ionicons/icons'; 
 
 const Example: React.FC<{children: React.ReactNode}> = ({ children }) => {
+ 
   return (
     <>
-      <IonMenu contentId="main-content">
+      <IonMenu contentId="main-content" swipeGesture={false}>
         <IonHeader>
           <IonToolbar>
             <IonTitle>Menu Content</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonContent className="ion-padding">
+          <IonMenuToggle>
           <IonItem>
             <IonButton routerLink='/page1' style={{ width: '100%' }} expand="full">
               Listado pruebas
@@ -67,6 +71,7 @@ const Example: React.FC<{children: React.ReactNode}> = ({ children }) => {
               Cerrar Sesion
             </IonButton>
           </IonItem>
+          </IonMenuToggle>
         </IonContent>
       </IonMenu>
 
