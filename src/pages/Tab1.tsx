@@ -8,7 +8,6 @@ import {
   IonMenuButton, 
   IonIcon 
 } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
 import Breadcrumb from '../components/breadcrumb'; 
 import { home } from 'ionicons/icons'; 
 

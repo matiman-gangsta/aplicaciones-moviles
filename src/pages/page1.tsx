@@ -8,7 +8,6 @@ import {
   IonList,
   IonItem,
   IonSplitPane,
-  IonMenu,
   IonButtons,
   IonMenuButton,
   IonIcon,
@@ -17,7 +16,6 @@ import {
   IonButton,
   IonToast
 } from '@ionic/react';
-import Example from '../components/Menu';
 import { star,home } from 'ionicons/icons';
 import Breadcrumb from '../components/breadcrumb';
 

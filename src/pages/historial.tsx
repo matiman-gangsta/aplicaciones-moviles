@@ -14,7 +14,6 @@ import {
   IonIcon,
   IonLabel
 } from '@ionic/react';
-import Example from '../components/Menu';
 import { star,home } from 'ionicons/icons';
 import Breadcrumb from '../components/breadcrumb';
 

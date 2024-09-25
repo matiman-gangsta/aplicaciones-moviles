@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
   IonIcon,
   IonLabel,
-  IonMenu,
   IonRouterOutlet,
   IonSplitPane,
   IonTabBar,
@@ -12,7 +11,7 @@ import {
   IonTabs,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
+import { triangle } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import RegistroEjercicios from './pages/registroejercicios';
 import RegistroPersonal from './pages/registropersonal'; 
@@ -25,10 +24,8 @@ import Example from './components/Menu';
 import page1 from './pages/page1';
 import ejercicios from "./pages/ejercicios"
 import Item1 from './pages/Page1_Item1';
-import { useIonRouter } from '@ionic/react';
-import { useIonViewWillEnter } from '@ionic/react';
 import { setupIonicReact } from '@ionic/react';
-import { createGesture} from '@ionic/core';
+
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
