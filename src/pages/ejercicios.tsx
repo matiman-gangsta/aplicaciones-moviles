@@ -7,17 +7,14 @@ import {
   IonToolbar,
   IonList,
   IonItem,
-  IonSplitPane,
-  IonMenu,
   IonButtons,
   IonMenuButton,
   IonIcon,
-  IonLabel
+  IonLabel,
+  IonChip
 } from '@ionic/react';
-import Example from '../components/Menu';
-import { star,home } from 'ionicons/icons';
+import { star, home } from 'ionicons/icons';
 import Breadcrumb from '../components/breadcrumb';
-
 
 const Ejercicios: React.FC = () => {
   const [items, setItems] = useState([
@@ -26,33 +23,46 @@ const Ejercicios: React.FC = () => {
     { name: "Ejercicio 3", description: "Descripción del ejercicio 3", route: "/ejercicios/item3" },
     { name: "Ejercicio 4", description: "Descripción del ejercicio 4", route: "/ejercicios/item4" },
   ]);
-  
+
   return (
-      <IonPage id="main-content">
-        <IonHeader>
-          <IonToolbar>
-            <IonButtons slot="start">
-              <IonMenuButton />
-            </IonButtons>
-            <IonTitle>Ejercicios</IonTitle>
-            <IonIcon icon={home} slot="start" />
-          </IonToolbar>
-        </IonHeader>
-        <IonContent className="ion-padding">
-        <Breadcrumb/>
-          <IonList>
-            {items.map((item, index) => (
-              <IonItem key={index} routerLink={item.route}>
-                <IonIcon icon={star} slot="start" />
-                <IonLabel>
-                  <h2>{item.name}</h2>
-                  <p>{item.description}</p>
-                </IonLabel>
-              </IonItem>
-            ))}
-          </IonList>
-        </IonContent>
-      </IonPage>
+    <IonPage id="main-content">
+      <IonHeader>
+        <IonToolbar>
+          <IonButtons slot="start">
+            <IonMenuButton />
+          </IonButtons>
+          <IonTitle>Ejercicios</IonTitle>
+          <IonIcon icon={home} slot="start" />
+        </IonToolbar>
+      </IonHeader>
+      <IonContent className="ion-padding">
+        <Breadcrumb />
+
+        <div style={{ marginBottom: '16px' }}>
+          <IonChip style={{ backgroundColor: 'rgba(255, 0, 0, 0.7)', color: 'white' }}>
+            <IonLabel>Fuerza</IonLabel>
+          </IonChip>
+          <IonChip style={{ backgroundColor: 'rgba(0, 0, 255, 0.7)', color: 'white' }}>
+            <IonLabel>Velocidad</IonLabel>
+          </IonChip>
+          <IonChip style={{ backgroundColor: 'rgba(0, 128, 0, 0.7)', color: 'white' }}>
+            <IonLabel>Destreza</IonLabel>
+          </IonChip>
+        </div>
+
+        <IonList>
+          {items.map((item, index) => (
+            <IonItem key={index} routerLink={item.route}>
+              <IonIcon icon={star} slot="start" />
+              <IonLabel>
+                <h2>{item.name}</h2>
+                <p>{item.description}</p>
+              </IonLabel>
+            </IonItem>
+          ))}
+        </IonList>
+      </IonContent>
+    </IonPage>
   );
 };
 
