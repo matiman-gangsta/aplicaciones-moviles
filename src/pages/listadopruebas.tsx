@@ -22,10 +22,10 @@ import Breadcrumb from '../components/breadcrumb';
 
   const Page1: React.FC = () => {
   const [items, setItems] = useState([
-    { name: "Prueba 1", description: "Descripcion de la prueba", route: "/page1_item1" },
-    { name: "Prueba 2", description: "Descripcion de la prueba", route: "/page1/item2" },
-    { name: "Prueba 3", description: "Descripcion de la prueba", route: "/page1/item3" },
-    { name: "Prueba 4", description: "Descripcion de la prueba", route: "/page1/item4" },
+    { name: "Prueba 1", description: "Descripcion de la prueba", route: "/listadopruebas_1" },
+    { name: "Prueba 2", description: "Descripcion de la prueba", route: "/listadopruebas_2" },
+    { name: "Prueba 3", description: "Descripcion de la prueba", route: "/listadopruebas_3" },
+    { name: "Prueba 4", description: "Descripcion de la prueba", route: "/listadopruebas_4" },
   ]);
   const [newItemName, setNewItemName] = useState<string>('');
   const [newItemDescription, setNewItemDescription] = useState<string>('');
@@ -36,7 +36,7 @@ import Breadcrumb from '../components/breadcrumb';
       const newItem = {
         name: newItemName,
         description: newItemDescription,
-        route: `/page1/${newItemName.toLowerCase().replace(/\s+/g, '-')}`,
+        route: `/listadopruebas/${newItemName.toLowerCase().replace(/\s+/g, '-')}`,
       };
       setItems([...items, newItem]);
       setNewItemName('');

@@ -21,9 +21,9 @@ import Login from './pages/login';
 import feedback from './pages/feedback';
 import HistorialEvaluaciones from './pages/historial';
 import Example from './components/Menu';
-import page1 from './pages/page1';
+import page1 from './pages/listadopruebas';
 import ejercicios from "./pages/ejercicios"
-import Item1 from './pages/Page1_Item1';
+import Item1 from './pages/listadopruebas_1';
 import { setupIonicReact } from '@ionic/react';
 
 
@@ -72,8 +72,8 @@ const App: React.FC = () => {
           <IonTabs>
             <IonRouterOutlet id="main-content">
               <Route path="/tab1" component={Tab1} exact={true} />
-              <Route path="/page1" component={page1} />
-              <Route path="/page1_item1" component={Item1} />
+              <Route path="/listadopruebas" component={page1} />
+              <Route path="/listadopruebas_1" component={Item1} />
               <Route 
                 path="/registro-ejercicios/:idPrueba" 
                 render={(props) => (

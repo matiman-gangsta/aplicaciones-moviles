@@ -30,7 +30,7 @@ const Example: React.FC<{children: React.ReactNode}> = ({ children }) => {
         <IonContent className="ion-padding">
           <IonMenuToggle>
           <IonItem>
-            <IonButton routerLink='/page1' style={{ width: '100%' }} expand="full">
+            <IonButton routerLink='/listadopruebas' style={{ width: '100%' }} expand="full">
               Listado pruebas
             </IonButton>
           </IonItem>

@@ -64,7 +64,7 @@ const RegistroEjercicios: React.FC<RegistroEjerciciosProps> = ({ pruebas, setPru
     });
 
     setPruebas(nuevasPruebas);
-    history.push('/page1'); 
+    history.push('/listadopruebas'); 
   };
 
   const irARecomendaciones = () => {
