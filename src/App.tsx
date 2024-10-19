@@ -23,6 +23,7 @@ import HistorialEvaluaciones from './pages/historial';
 import Example from './components/Menu';
 import page1 from './pages/listadopruebas';
 import ejercicios from "./pages/ejercicios"
+import entrenamiento from './pages/entrenamiento';
 import Item1 from './pages/listadopruebas_1';
 import { setupIonicReact } from '@ionic/react';
 
@@ -75,7 +76,7 @@ const App: React.FC = () => {
               <Route path="/listadopruebas" component={page1} />
               <Route path="/listadopruebas_1" component={Item1} />
               <Route 
-                path="/registro-ejercicios/:idPrueba" 
+                path="/registro-ejercicios" 
                 render={(props) => (
                   <RegistroEjercicios
                     {...props} 
@@ -89,10 +90,11 @@ const App: React.FC = () => {
               <Route path="/recomendaciones" component={Recomendaciones} />
               <Route path="/explicaciones" component={Explicaciones} />
               <Route path="/login" component={Login} exact={true} />
-              <Route path="/ejercicios" component={ejercicios} exact={true} />
+              <Route path="/listadopruebas/prueba-1" component={ejercicios} exact={true} />
               <Route path="/feedback" component={feedback} exact={true} />
               <Route path="/historial" component={HistorialEvaluaciones} exact={true} />
               <Route path="/registro-personal" component={RegistroPersonal} exact={true} />
+              <Route path="/entrenamiento" component={entrenamiento} exact={true} />
 
             </IonRouterOutlet>
 

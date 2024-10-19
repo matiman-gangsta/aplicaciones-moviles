@@ -16,16 +16,17 @@ import {
   IonButton,
   IonToast
 } from '@ionic/react';
-import { star,home } from 'ionicons/icons';
+import { useHistory } from 'react-router-dom'; 
+import { star, home } from 'ionicons/icons';
 import Breadcrumb from '../components/breadcrumb';
 
-
-  const Page1: React.FC = () => {
+const Page1: React.FC = () => {
+  const history = useHistory(); 
   const [items, setItems] = useState([
-    { name: "Prueba 1", description: "Descripcion de la prueba", route: "/listadopruebas_1" },
-    { name: "Prueba 2", description: "Descripcion de la prueba", route: "/listadopruebas_2" },
-    { name: "Prueba 3", description: "Descripcion de la prueba", route: "/listadopruebas_3" },
-    { name: "Prueba 4", description: "Descripcion de la prueba", route: "/listadopruebas_4" },
+    { name: "Prueba 1", description: "Descripción de la prueba", route: "/listadopruebas/prueba-1" },
+    { name: "Prueba 2", description: "Descripción de la prueba", route: "/listadopruebas/prueba-2" },
+    { name: "Prueba 3", description: "Descripción de la prueba", route: "/listadopruebas/prueba-3" },
+    { name: "Prueba 4", description: "Descripción de la prueba", route: "/listadopruebas/prueba-4" },
   ]);
   const [newItemName, setNewItemName] = useState<string>('');
   const [newItemDescription, setNewItemDescription] = useState<string>('');
@@ -33,17 +34,25 @@ import Breadcrumb from '../components/breadcrumb';
 
   const handleAddItem = () => {
     if (newItemName && newItemDescription) {
-      const newItem = {
-        name: newItemName,
-        description: newItemDescription,
-        route: `/listadopruebas/${newItemName.toLowerCase().replace(/\s+/g, '-')}`,
+      const newItemIndex = items.length + 1; 
+      const route = `/listadopruebas/prueba-${newItemIndex}`; 
+
+      const newItem = { 
+        name: newItemName,  
+        description: newItemDescription, 
+        route 
       };
-      setItems([...items, newItem]);
+
+      setItems([...items, newItem]); 
       setNewItemName('');
       setNewItemDescription('');
       setShowToast(true);
     }
-  }; 
+  };
+
+  const handleNavigate = (route: string) => {
+    history.push(route); 
+  };
 
   return (
     <IonSplitPane contentId="main-content">
@@ -52,16 +61,18 @@ import Breadcrumb from '../components/breadcrumb';
           <IonToolbar>
             <IonButtons slot="start">
               <IonMenuButton />
-              </IonButtons>
-              <IonIcon icon={home} slot="start"/>
-            <IonTitle>Pruebas fisicas</IonTitle>
+            </IonButtons>
+            <IonIcon icon={home} slot="start" />
+            <IonTitle>Pruebas Físicas</IonTitle>
           </IonToolbar>
         </IonHeader>
+
         <IonContent className="ion-padding">
-        <Breadcrumb />
+          <Breadcrumb />
+
           <IonList>
             {items.map((item, index) => (
-              <IonItem key={index} routerLink={item.route}>
+              <IonItem key={index} button onClick={() => handleNavigate(item.route)}>
                 <IonIcon icon={star} slot="start" />
                 <IonLabel>
                   <h2>{item.name}</h2>
@@ -85,14 +96,15 @@ import Breadcrumb from '../components/breadcrumb';
               onIonChange={(e: CustomEvent) => setNewItemDescription(e.detail.value!)}
             />
           </IonItem>
+
           <IonButton expand="full" onClick={handleAddItem}>
-            Agregar Item
+            Agregar Prueba
           </IonButton>
 
           <IonToast
             isOpen={showToast}
             onDidDismiss={() => setShowToast(false)}
-            message="Item agregado exitosamente."
+            message="Prueba agregada exitosamente."
             duration={2000}
           />
         </IonContent>
@@ -102,4 +114,3 @@ import Breadcrumb from '../components/breadcrumb';
 };
 
 export default Page1;
-
