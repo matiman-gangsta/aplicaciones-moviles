@@ -47,11 +47,6 @@ const Example: React.FC<{children: React.ReactNode}> = ({ children }) => {
             </IonButton>
           </IonItem>
           <IonItem>
-            <IonButton routerLink='/ejercicios' style={{ width: '100%' }} expand="full">
-              Ejercicios
-            </IonButton>
-          </IonItem>
-          <IonItem>
             <IonButton routerLink='/feedback' style={{ width: '100%' }} expand="full">
               Feedback
             </IonButton>
