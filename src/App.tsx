@@ -73,8 +73,8 @@ const App: React.FC = () => {
           <IonTabs>
             <IonRouterOutlet id="main-content">
               <Route path="/tab1" component={Tab1} exact={true} />
-              <Route path="/listadopruebas" component={page1} />
-              <Route path="/listadopruebas_1" component={Item1} />
+              <Route path="/listadopruebas" component={page1} exact={true} />
+              <Route path="/listadopruebas_1" component={Item1} exact={true} />
               <Route 
                 path="/registro-ejercicios" 
                 render={(props) => (
@@ -83,12 +83,12 @@ const App: React.FC = () => {
                     pruebas={pruebas} 
                     setPruebas={setPruebas} 
                   />
-                )} 
+                )} exact={true}
               />
 
               <Redirect exact from="/" to="/login" />
-              <Route path="/recomendaciones" component={Recomendaciones} />
-              <Route path="/explicaciones" component={Explicaciones} />
+              <Route path="/recomendaciones" component={Recomendaciones} exact={true} />
+              <Route path="/explicaciones" component={Explicaciones} exact={true} />
               <Route path="/login" component={Login} exact={true} />
               <Route path="/listadopruebas/prueba-1" component={ejercicios} exact={true} />
               <Route path="/feedback" component={feedback} exact={true} />
