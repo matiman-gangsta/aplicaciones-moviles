@@ -70,6 +70,9 @@ const Example: React.FC<{children: React.ReactNode}> = ({ children }) => {
             <IonButton routerLink='/login' style={{ width: '100%' }} expand="full">
               Cerrar Sesion
             </IonButton>
+            <IonButton routerLink='/test_bbdd' style={{ width: '100%' }} expand="full">
+              test_bbdd
+            </IonButton>
           </IonItem>
           </IonMenuToggle>
         </IonContent>

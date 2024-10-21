@@ -25,6 +25,7 @@ import page1 from './pages/listadopruebas';
 import ejercicios from "./pages/ejercicios"
 import Item1 from './pages/listadopruebas_1';
 import { setupIonicReact } from '@ionic/react';
+import Tab2 from './pages/test_bbdd';
 
 
 /* Core CSS required for Ionic components to work properly */
@@ -48,6 +49,7 @@ import '@ionic/react/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import NombresPage from './pages/test_bbdd';
 
 setupIonicReact({
   swipeBackEnabled :false
@@ -93,6 +95,7 @@ const App: React.FC = () => {
               <Route path="/feedback" component={feedback} exact={true} />
               <Route path="/historial" component={HistorialEvaluaciones} exact={true} />
               <Route path="/registro-personal" component={RegistroPersonal} exact={true} />
+              <Route path="/test_bbdd" component={Tab2} exact={true} />
 
             </IonRouterOutlet>
 
