@@ -23,6 +23,7 @@ import HistorialEvaluaciones from './pages/historial';
 import Example from './components/Menu';
 import page1 from './pages/listadopruebas';
 import ejercicios from "./pages/ejercicios"
+import entrenamiento from './pages/entrenamiento';
 import Item1 from './pages/listadopruebas_1';
 import { setupIonicReact } from '@ionic/react';
 import Tab2 from './pages/test_bbdd';
@@ -74,28 +75,29 @@ const App: React.FC = () => {
           <IonTabs>
             <IonRouterOutlet id="main-content">
               <Route path="/tab1" component={Tab1} exact={true} />
-              <Route path="/listadopruebas" component={page1} />
-              <Route path="/listadopruebas_1" component={Item1} />
+              <Route path="/listadopruebas" component={page1} exact={true} />
+              <Route path="/listadopruebas_1" component={Item1} exact={true} />
               <Route 
-                path="/registro-ejercicios/:idPrueba" 
+                path="/registro-ejercicios" 
                 render={(props) => (
                   <RegistroEjercicios
                     {...props} 
                     pruebas={pruebas} 
                     setPruebas={setPruebas} 
                   />
-                )} 
+                )} exact={true}
               />
 
               <Redirect exact from="/" to="/login" />
-              <Route path="/recomendaciones" component={Recomendaciones} />
-              <Route path="/explicaciones" component={Explicaciones} />
+              <Route path="/recomendaciones" component={Recomendaciones} exact={true} />
+              <Route path="/explicaciones" component={Explicaciones} exact={true} />
               <Route path="/login" component={Login} exact={true} />
-              <Route path="/ejercicios" component={ejercicios} exact={true} />
+              <Route path="/listadopruebas/prueba-1" component={ejercicios} exact={true} />
               <Route path="/feedback" component={feedback} exact={true} />
               <Route path="/historial" component={HistorialEvaluaciones} exact={true} />
               <Route path="/registro-personal" component={RegistroPersonal} exact={true} />
               <Route path="/test_bbdd" component={Tab2} exact={true} />
+              <Route path="/entrenamiento" component={entrenamiento} exact={true} />
 
             </IonRouterOutlet>
 
