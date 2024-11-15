@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   IonContent,
   IonHeader,
@@ -18,40 +18,60 @@ import {
 } from '@ionic/react';
 import { useHistory } from 'react-router-dom'; 
 import { star, home } from 'ionicons/icons';
+import axios from 'axios';
 import Breadcrumb from '../components/breadcrumb';
 
 const Page1: React.FC = () => {
-  const history = useHistory(); 
-  const [items, setItems] = useState([
-    { name: "Prueba 1", description: "Descripción de la prueba", route: "/listadopruebas/prueba-1" },
-    { name: "Prueba 2", description: "Descripción de la prueba", route: "/listadopruebas/prueba-2" },
-    { name: "Prueba 3", description: "Descripción de la prueba", route: "/listadopruebas/prueba-3" },
-    { name: "Prueba 4", description: "Descripción de la prueba", route: "/listadopruebas/prueba-4" },
-  ]);
+  const history = useHistory();
+  const [items, setItems] = useState<{ name: string; description: string; route: string }[]>([]);
   const [newItemName, setNewItemName] = useState<string>('');
   const [newItemDescription, setNewItemDescription] = useState<string>('');
   const [showToast, setShowToast] = useState<boolean>(false);
 
-  const handleAddItem = () => {
-    if (newItemName && newItemDescription) {
-      const newItemIndex = items.length + 1; 
-      const route = `/listadopruebas/prueba-${newItemIndex}`; 
+  // URL de tu API en Azure
+  const API_URL = 'https://tu-api-azure.com/items'; 
 
-      const newItem = { 
-        name: newItemName,  
-        description: newItemDescription, 
-        route 
-      };
-
-      setItems([...items, newItem]); 
-      setNewItemName('');
-      setNewItemDescription('');
-      setShowToast(true);
+  // Función para obtener las pruebas desde la base de datos en Azure
+  const fetchItems = async () => {
+    try {
+      const response = await axios.get(API_URL);
+      setItems(response.data); // Asume que la API devuelve un array de pruebas
+    } catch (error) {
+      console.error("Error al obtener las pruebas:", error);
     }
   };
 
+  // Función para guardar una nueva prueba en la base de datos en Azure
+  const saveItem = async (newItem: { name: string; description: string; route: string }) => {
+    try {
+      await axios.post(API_URL, newItem); // Envía el nuevo elemento a la base de datos
+      setItems([...items, newItem]); // Actualiza el estado local para mostrar la nueva prueba
+      setShowToast(true);
+    } catch (error) {
+      console.error("Error al guardar la prueba:", error);
+    }
+  };
+
+  // Modificación de handleAddItem para utilizar saveItem y guardar en la base de datos
+  const handleAddItem = () => {
+    if (newItemName && newItemDescription) {
+      const newItemIndex = items.length + 1; 
+      const route = `/listadopruebas/prueba-${newItemIndex}`;
+      const newItem = { name: newItemName, description: newItemDescription, route };
+
+      saveItem(newItem); // Llama a la función de guardado en la base de datos
+      setNewItemName('');
+      setNewItemDescription('');
+    }
+  };
+
+  // Cargar las pruebas al iniciar el componente
+  useEffect(() => {
+    fetchItems();
+  }, []);
+
   const handleNavigate = (route: string) => {
-    history.push(route); 
+    history.push(route);
   };
 
   return (
