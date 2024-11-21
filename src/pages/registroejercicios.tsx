@@ -50,15 +50,15 @@ const RegistroEjercicios: React.FC<RegistroEjerciciosProps> = ({ pruebas, setPru
   const [showToast, setShowToast] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
 
-  const API_URL = 'https://tu-api-azure.com/ejercicios'; // Cambia por el endpoint real
+  const API_URL = 'https://api-fitapp-hmakejgwhgcqauhc.eastus2-01.azurewebsites.net/api/ejercicios'; // Cambia por el endpoint real
 
   const registrarEjercicio = async () => {
     const ejercicio: Ejercicio = {
       nombre: nombreEjercicio,
       repeticiones: Number(repeticiones),
       tipo: tipoEjercicio,
-      explicacion,
-      recomendaciones,
+      explicacion: explicacion,
+      recomendaciones: recomendaciones,
     };
 
     try {
