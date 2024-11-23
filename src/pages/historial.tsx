@@ -13,8 +13,9 @@ import {
   IonMenuButton,
   IonIcon,
   IonLabel,
+  IonButton,
 } from '@ionic/react';
-import { star, home } from 'ionicons/icons';
+import { star, home, trash } from 'ionicons/icons';  // Importamos el ícono de la papelera
 import Breadcrumb from '../components/breadcrumb';
 
 interface HistorialItem {
@@ -31,6 +32,13 @@ const HistorialEvaluaciones: React.FC = () => {
     const historial = JSON.parse(localStorage.getItem('historialEvaluaciones') || '[]');
     setItems(historial);
   }, []);
+
+  // Función para eliminar una evaluación
+  const handleDelete = (name: string) => {
+    const updatedItems = items.filter(item => item.name !== name);
+    setItems(updatedItems);
+    localStorage.setItem('historialEvaluaciones', JSON.stringify(updatedItems));
+  };
 
   return (
     <IonSplitPane contentId="main-content">
@@ -60,6 +68,13 @@ const HistorialEvaluaciones: React.FC = () => {
                   </IonLabel>
                   <div style={{ marginLeft: 'auto', alignSelf: 'center' }}>
                     <h3>{item.successRate}</h3>
+                    <IonButton
+                      fill="clear"
+                      color="danger"
+                      onClick={() => handleDelete(item.name)}
+                    >
+                      <IonIcon icon={trash} />
+                    </IonButton>
                   </div>
                 </IonItem>
               ))

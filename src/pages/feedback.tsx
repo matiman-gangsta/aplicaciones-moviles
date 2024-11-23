@@ -33,12 +33,21 @@ const Feedback: React.FC = () => {
   React.useEffect(() => {
     if (resultados.length > 0) {
       const historial = JSON.parse(localStorage.getItem('historialEvaluaciones') || '[]');
+      
+      // Crear los nuevos resultados a agregar
       const nuevosResultados = resultados.map((resultado) => ({
         name: resultado.ejercicio,
         description: `Repeticiones: ${resultado.repeticiones} / Objetivo: ${resultado.objetivoRepeticiones}`,
         successRate: `${calcularPorcentaje(resultado.repeticiones, resultado.objetivoRepeticiones)}%`,
       }));
-      localStorage.setItem('historialEvaluaciones', JSON.stringify([...historial, ...nuevosResultados]));
+
+      // Evitar duplicados verificando que no existan evaluaciones con el mismo nombre
+      const historialFiltrado = historial.filter((item: { name: string; }) =>
+        !nuevosResultados.some((nuevo) => nuevo.name === item.name)
+      );
+
+      // Guardar en localStorage solo las nuevas que no existían
+      localStorage.setItem('historialEvaluaciones', JSON.stringify([...historialFiltrado, ...nuevosResultados]));
     }
   }, [resultados]);
 
