@@ -19,7 +19,7 @@ import Breadcrumb from '../components/breadcrumb';
 import { home } from 'ionicons/icons';
 import axios from 'axios';
 
-interface Ejercicio {
+export interface Ejercicio {
   nombre: string;
   repeticiones: number;
   tipo: string;
@@ -27,7 +27,7 @@ interface Ejercicio {
   recomendaciones: string;
 }
 
-interface Prueba {
+export interface Prueba {
   id: number;
   nombre: string;
   ejercicios: Ejercicio[];
@@ -53,42 +53,46 @@ const RegistroEjercicios: React.FC<RegistroEjerciciosProps> = ({ pruebas, setPru
   const API_URL = 'https://api-fitapp-hmakejgwhgcqauhc.eastus2-01.azurewebsites.net/api/ejercicios'; // Cambia por el endpoint real
 
   const registrarEjercicio = async () => {
+    if (!nombreEjercicio || !repeticiones || !tipoEjercicio) {
+      setToastMessage('Por favor, completa todos los campos obligatorios.');
+      setShowToast(true);
+      return;
+    }
+  
     const ejercicio: Ejercicio = {
       nombre: nombreEjercicio,
       repeticiones: Number(repeticiones),
       tipo: tipoEjercicio,
-      explicacion: explicacion,
-      recomendaciones: recomendaciones,
+      explicacion,
+      recomendaciones,
     };
-
+  
     try {
-      // Guardar el ejercicio en la base de datos
-      const response = await axios.post(API_URL, {
+      const response = await axios.post(`${API_URL}`, {
         ...ejercicio,
-        pruebaId: Number(idPrueba),
+        pruebaId: Number(idPrueba), // Relacionar con la prueba física
       });
-
+  
       if (response.status === 201) {
-        const nuevasPruebas = pruebas.map(prueba => {
-          if (prueba.id === Number(idPrueba)) {
-            return { ...prueba, ejercicios: [...prueba.ejercicios, ejercicio] };
-          }
-          return prueba;
-        });
-
+        // Actualiza el estado local con los datos del backend
+        const nuevasPruebas = pruebas.map((prueba) =>
+          prueba.id === Number(idPrueba)
+            ? { ...prueba, ejercicios: [...prueba.ejercicios, response.data] }
+            : prueba
+        );
+  
         setPruebas(nuevasPruebas);
         setToastMessage('Ejercicio registrado exitosamente.');
         setShowToast(true);
-
-        // Redirigir a la lista de pruebas
         history.push('/listadopruebas');
       }
     } catch (error) {
-      console.error("Error al registrar el ejercicio:", error);
+      console.error('Error al registrar el ejercicio:', error);
       setToastMessage('Error al registrar el ejercicio.');
       setShowToast(true);
     }
   };
+  
 
   const irARecomendaciones = () => {
     history.push(`/recomendaciones/${recomendaciones}`);

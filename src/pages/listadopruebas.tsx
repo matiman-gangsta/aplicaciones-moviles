@@ -19,6 +19,7 @@ import {
 import { useHistory } from 'react-router-dom'; 
 import { star, home } from 'ionicons/icons';
 import axios from 'axios';
+import { Ejercicio, Prueba } from '../pages/registroejercicios'
 import Breadcrumb from '../components/breadcrumb';
 
 const Page1: React.FC = () => {
@@ -31,15 +32,20 @@ const Page1: React.FC = () => {
   // URL de tu API en Azure
   const API_URL = 'https://tu-api-azure.com/items'; 
 
-  // Función para obtener las pruebas desde la base de datos en Azure
   const fetchItems = async () => {
     try {
       const response = await axios.get(API_URL);
-      setItems(response.data); // Asume que la API devuelve un array de pruebas
+      const pruebasConEjercicios = response.data.map((prueba: Prueba) => ({
+        ...prueba,
+        ejercicios: prueba.ejercicios || [], // Asegúrate de manejar el caso de pruebas sin ejercicios
+      }));
+      setItems(pruebasConEjercicios);
     } catch (error) {
       console.error("Error al obtener las pruebas:", error);
     }
   };
+  
+
 
   // Función para guardar una nueva prueba en la base de datos en Azure
   const saveItem = async (newItem: { name: string; description: string; route: string }) => {
