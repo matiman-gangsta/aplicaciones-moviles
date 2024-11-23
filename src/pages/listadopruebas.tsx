@@ -19,6 +19,7 @@ import {
 import { useHistory } from 'react-router-dom'; 
 import { star, home } from 'ionicons/icons';
 import axios from 'axios';
+import { Prueba } from '../pages/registroejercicios'
 import Breadcrumb from '../components/breadcrumb';
 
 const Page1: React.FC = () => {
@@ -31,7 +32,6 @@ const Page1: React.FC = () => {
   // URL de tu API en Azure
   const API_URL = 'https://api-fitapp-hmakejgwhgcqauhc.eastus2-01.azurewebsites.net/api'; 
 
-  // Función para obtener las pruebas desde la base de datos en Azure
   const fetchItems = async () => {
     try {
       const response = await axios.get("https://api-fitapp-hmakejgwhgcqauhc.eastus2-01.azurewebsites.net/api/pruebas");
@@ -40,6 +40,8 @@ const Page1: React.FC = () => {
       console.error("Error al obtener las pruebas:", error);
     }
   };
+  
+
 
   // Función para guardar una nueva prueba en la base de datos en Azure
   const saveItem = async (newItem: { nombre: string; descripcion: string;}) => {

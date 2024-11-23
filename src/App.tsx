@@ -18,6 +18,7 @@ import RegistroPersonal from './pages/registropersonal';
 import Recomendaciones from './pages/recomendaciones';
 import Explicaciones from './pages/explicaciones';
 import Login from './pages/login';
+import Register from "./pages/register"
 import feedback from './pages/feedback';
 import HistorialEvaluaciones from './pages/historial';
 import Example from './components/Menu';
@@ -92,6 +93,7 @@ const App: React.FC = () => {
               <Route path="/recomendaciones" component={Recomendaciones} exact={true} />
               <Route path="/explicaciones" component={Explicaciones} exact={true} />
               <Route path="/login" component={Login} exact={true} />
+              <Route path="/register" component={Register} exact={true} />
               <Route path="/listadopruebas/prueba-1" component={ejercicios} exact={true} />
               <Route path="/feedback" component={feedback} exact={true} />
               <Route path="/historial" component={HistorialEvaluaciones} exact={true} />
