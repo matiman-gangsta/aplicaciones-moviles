@@ -23,18 +23,18 @@ import Breadcrumb from '../components/breadcrumb';
 
 const Page1: React.FC = () => {
   const history = useHistory();
-  const [items, setItems] = useState<{ name: string; description: string; route: string }[]>([]);
+  const [items, setItems] = useState<{ nombre: string; descripcion: string;}[]>([]);
   const [newItemName, setNewItemName] = useState<string>('');
   const [newItemDescription, setNewItemDescription] = useState<string>('');
   const [showToast, setShowToast] = useState<boolean>(false);
 
   // URL de tu API en Azure
-  const API_URL = 'https://tu-api-azure.com/items'; 
+  const API_URL = 'https://api-fitapp-hmakejgwhgcqauhc.eastus2-01.azurewebsites.net/api'; 
 
   // Función para obtener las pruebas desde la base de datos en Azure
   const fetchItems = async () => {
     try {
-      const response = await axios.get(API_URL);
+      const response = await axios.get("https://api-fitapp-hmakejgwhgcqauhc.eastus2-01.azurewebsites.net/api/pruebas");
       setItems(response.data); // Asume que la API devuelve un array de pruebas
     } catch (error) {
       console.error("Error al obtener las pruebas:", error);
@@ -42,9 +42,9 @@ const Page1: React.FC = () => {
   };
 
   // Función para guardar una nueva prueba en la base de datos en Azure
-  const saveItem = async (newItem: { name: string; description: string; route: string }) => {
+  const saveItem = async (newItem: { nombre: string; descripcion: string;}) => {
     try {
-      await axios.post(API_URL, newItem); // Envía el nuevo elemento a la base de datos
+      await axios.post('https://api-fitapp-hmakejgwhgcqauhc.eastus2-01.azurewebsites.net/api/pruebas', newItem); // Envía el nuevo elemento a la base de datos
       setItems([...items, newItem]); // Actualiza el estado local para mostrar la nueva prueba
       setShowToast(true);
     } catch (error) {
@@ -57,7 +57,7 @@ const Page1: React.FC = () => {
     if (newItemName && newItemDescription) {
       const newItemIndex = items.length + 1; 
       const route = `/listadopruebas/prueba-${newItemIndex}`;
-      const newItem = { name: newItemName, description: newItemDescription, route };
+      const newItem = { nombre: newItemName, descripcion: newItemDescription, route };
 
       saveItem(newItem); // Llama a la función de guardado en la base de datos
       setNewItemName('');
@@ -92,11 +92,11 @@ const Page1: React.FC = () => {
 
           <IonList>
             {items.map((item, index) => (
-              <IonItem key={index} button onClick={() => handleNavigate(item.route)}>
+              <IonItem key={index} >
                 <IonIcon icon={star} slot="start" />
                 <IonLabel>
-                  <h2>{item.name}</h2>
-                  <p>{item.description}</p>
+                  <h2>{item.nombre}</h2>
+                  <p>{item.descripcion}</p>
                 </IonLabel>
               </IonItem>
             ))}
