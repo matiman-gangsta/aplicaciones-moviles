@@ -1,6 +1,15 @@
 import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonIcon, IonMenuButton, IonButtons } from '@ionic/react';
-import { useLocation } from 'react-router-dom'; // Importar useLocation para recibir datos
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonIcon,
+  IonMenuButton,
+  IonButtons,
+} from '@ionic/react';
+import { useLocation } from 'react-router-dom';
 import Breadcrumb from '../components/breadcrumb';
 import { home } from 'ionicons/icons';
 
@@ -12,12 +21,26 @@ interface Resultado {
 }
 
 const Feedback: React.FC = () => {
-  const location = useLocation<{ resultados: Resultado[] }>(); // Recibir datos de la navegación
+  const location = useLocation<{ resultados: Resultado[] }>();
   const resultados = location.state?.resultados || [];
 
   const calcularPorcentaje = (realizadas: number, objetivo: number): number => {
+    if (objetivo === 0) return 0;
     return Math.round((realizadas / objetivo) * 100);
   };
+
+  // Guardar los datos en localStorage
+  React.useEffect(() => {
+    if (resultados.length > 0) {
+      const historial = JSON.parse(localStorage.getItem('historialEvaluaciones') || '[]');
+      const nuevosResultados = resultados.map((resultado) => ({
+        name: resultado.ejercicio,
+        description: `Repeticiones: ${resultado.repeticiones} / Objetivo: ${resultado.objetivoRepeticiones}`,
+        successRate: `${calcularPorcentaje(resultado.repeticiones, resultado.objetivoRepeticiones)}%`,
+      }));
+      localStorage.setItem('historialEvaluaciones', JSON.stringify([...historial, ...nuevosResultados]));
+    }
+  }, [resultados]);
 
   return (
     <IonPage>
@@ -38,7 +61,9 @@ const Feedback: React.FC = () => {
             <h3>{resultado.ejercicio}</h3>
             <p>Repeticiones Realizadas: {resultado.repeticiones}</p>
             <p>Objetivo de Repeticiones: {resultado.objetivoRepeticiones}</p>
-            <p>Porcentaje de Éxito: {calcularPorcentaje(resultado.repeticiones, resultado.objetivoRepeticiones)}%</p>
+            <p>
+              Porcentaje de Éxito: {calcularPorcentaje(resultado.repeticiones, resultado.objetivoRepeticiones)}%
+            </p>
           </div>
         ))}
       </IonContent>

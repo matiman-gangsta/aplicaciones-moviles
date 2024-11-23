@@ -19,7 +19,7 @@ import {
 import { useHistory } from 'react-router-dom'; 
 import { star, home } from 'ionicons/icons';
 import axios from 'axios';
-import { Ejercicio, Prueba } from '../pages/registroejercicios'
+import { Prueba } from '../pages/registroejercicios'
 import Breadcrumb from '../components/breadcrumb';
 
 const Page1: React.FC = () => {
