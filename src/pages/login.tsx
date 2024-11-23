@@ -1,14 +1,29 @@
 import React, { useState } from 'react';
-import { IonPage, IonContent, IonInput, IonButton, IonItem, IonLabel, IonText } from '@ionic/react';
+import { IonPage, IonContent, IonInput, IonButton, IonItem, IonLabel, IonText, IonToast } from '@ionic/react';
+import axios from 'axios'; // Asegúrate de instalar axios: npm install axios
 import './login.css'; 
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [showToast, setShowToast] = useState<boolean>(false);
+  const [toastMessage, setToastMessage] = useState<string>('');
 
-  const handleLogin = () => {
-    console.log('Username:', username);
-    console.log('Password:', password);
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post('http://tu-backend.com/api/login', { username, password });
+      
+      if (response.data.token) {
+        // Guardar el token en el almacenamiento local (localStorage o sessionStorage)
+        localStorage.setItem('authToken', response.data.token);
+        // Redirigir a la página principal (ajusta la ruta según tu aplicación)
+        window.location.href = '/tab1';
+      }
+    } catch (error) {
+      console.error('Error al hacer login:', error);
+      setToastMessage('Usuario o contraseña incorrectos');
+      setShowToast(true);
+    }
   };
 
   return (
@@ -36,13 +51,20 @@ const Login: React.FC = () => {
             />
           </IonItem>
 
-          <IonButton expand="block" onClick={handleLogin} routerLink='/tab1'>
+          <IonButton expand="block" onClick={handleLogin}>
             Ingresar
           </IonButton>
 
           <IonText className="ion-text-center">
             <p>Aun no tienes una cuenta? <a href="/register">Regístrate</a></p>
           </IonText>
+
+          <IonToast
+            isOpen={showToast}
+            onDidDismiss={() => setShowToast(false)}
+            message={toastMessage}
+            duration={2000}
+          />
         </div>
       </IonContent>
     </IonPage>
