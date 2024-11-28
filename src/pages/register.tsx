@@ -13,8 +13,6 @@ const Register: React.FC = () => {
 
   const handleRegister = async () => {
     // Validar que las contraseñas coincidan
-    console.log('Password:', password);
-    console.log('Confirm Password:', confirmPassword);
     if (password.trim() !== confirmPassword.trim()) {
         setToastMessage('Las contraseñas no coinciden');
         setShowToast(true);
@@ -60,7 +58,7 @@ const Register: React.FC = () => {
               type="text"
               value={username}
               placeholder="Ingrese un nombre de usuario..."
-              onIonChange={(e: CustomEvent) => setUsername(e.detail.value!)}
+              onIonInput={(e: CustomEvent) => setUsername(e.detail.value!)}
             />
           </IonItem>
 
@@ -70,7 +68,7 @@ const Register: React.FC = () => {
               type="email"
               value={email}
               placeholder="Ingrese su correo electrónico..."
-              onIonChange={(e: CustomEvent) => setEmail(e.detail.value!)}
+              onIonInput={(e: CustomEvent) => setEmail(e.detail.value!)}
             />
           </IonItem>
 
@@ -80,21 +78,23 @@ const Register: React.FC = () => {
               type="password"
               value={password}
               placeholder="Ingrese su contraseña..."
-              onIonChange={(e: CustomEvent) => setPassword(e.detail.value!)}
+              clearOnEdit= {false}
+              onIonInput={(e: CustomEvent) => setPassword(e.detail.value!)}
             />
           </IonItem>
 
           <IonItem>
-  <IonLabel position="floating">Confirmar Contraseña</IonLabel>
-  <IonInput
-    type="password"
-    value={confirmPassword}  // El valor debe estar vinculado al estado confirmPassword
-    placeholder="Confirme su contraseña..."
-    onIonChange={(e: CustomEvent) => {
-      setConfirmPassword(e.detail.value!);  // Actualiza el estado al primer intento
-    }}
-  />
-</IonItem>
+            <IonLabel position="floating">Confirmar Contraseña</IonLabel>
+            <IonInput
+              type="password"
+              value={confirmPassword}  // El valor debe estar vinculado al estado confirmPassword
+              placeholder="Confirme su contraseña..."
+              clearOnEdit= {false}
+              onIonInput={(e: CustomEvent) => {
+                setConfirmPassword(e.detail.value!);  // Actualiza el estado al primer intento
+              }}
+            />
+          </IonItem>
 
 
           <IonButton expand="block" onClick={handleRegister}>
