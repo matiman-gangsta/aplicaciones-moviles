@@ -37,7 +37,7 @@ const Login: React.FC = () => {
               type="text"
               value={username}
               placeholder="Ingrese usuario..."
-              onIonChange={(e: CustomEvent) => setUsername(e.detail.value!)}
+              onIonInput={(e: CustomEvent) => setUsername(e.detail.value!)}
             />
           </IonItem>
 
@@ -47,7 +47,7 @@ const Login: React.FC = () => {
               type="password"
               value={password}
               placeholder="Ingrese su contraseña..."
-              onIonChange={(e: CustomEvent) => setPassword(e.detail.value!)}
+              onIonInput={(e: CustomEvent) => setPassword(e.detail.value!)}
             />
           </IonItem>
 

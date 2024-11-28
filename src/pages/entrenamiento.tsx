@@ -73,7 +73,7 @@ const Entrenamiento: React.FC = () => {
             <IonLabel position="floating">Ejercicio</IonLabel>
             <IonInput
               value={ejercicio}
-              onIonChange={(e: CustomEvent) => setEjercicio(e.detail.value!)}
+              onIonInput={(e: CustomEvent) => setEjercicio(e.detail.value!)}
               required
             />
           </IonItem>
@@ -83,7 +83,7 @@ const Entrenamiento: React.FC = () => {
             <IonInput
               type="number"
               value={repeticiones || ''}
-              onIonChange={(e: CustomEvent) => setRepeticiones(parseInt(e.detail.value!, 10))}
+              onIonInput={(e: CustomEvent) => setRepeticiones(parseInt(e.detail.value!, 10))}
               required
             />
           </IonItem>
@@ -93,7 +93,7 @@ const Entrenamiento: React.FC = () => {
             <IonInput
               type="number"
               value={objetivoRepeticiones || ''}
-              onIonChange={(e: CustomEvent) => setObjetivoRepeticiones(parseInt(e.detail.value!, 10))}
+              onIonInput={(e: CustomEvent) => setObjetivoRepeticiones(parseInt(e.detail.value!, 10))}
               required
             />
           </IonItem>
@@ -103,7 +103,7 @@ const Entrenamiento: React.FC = () => {
             <IonInput
               type="number"
               value={peso || ''}
-              onIonChange={(e: CustomEvent) => setPeso(parseInt(e.detail.value!, 10))}
+              onIonInput={(e: CustomEvent) => setPeso(parseInt(e.detail.value!, 10))}
             />
           </IonItem>
 

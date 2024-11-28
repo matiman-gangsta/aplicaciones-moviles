@@ -47,7 +47,7 @@ const RegistroPersonal: React.FC = () => {
           <IonInput
             type="text"
             value={alias}
-            onIonChange={(e: CustomEvent) => setAlias(e.detail.value!)}
+            onIonInput={(e: CustomEvent) => setAlias(e.detail.value!)}
           />
         </IonItem>
 
@@ -56,7 +56,7 @@ const RegistroPersonal: React.FC = () => {
           <IonTextarea
             value={antropometricos}
             placeholder="(si es válido y necesario)"
-            onIonChange={(e: CustomEvent) => setAntropometricos(e.detail.value!)}
+            onIonInput={(e: CustomEvent) => setAntropometricos(e.detail.value!)}
           />
         </IonItem>
 

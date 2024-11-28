@@ -122,7 +122,7 @@ const RegistroEjercicios: React.FC<RegistroEjerciciosProps> = ({ pruebas, setPru
             <IonInput
               type="text"
               value={nombreEjercicio}
-              onIonChange={(e: CustomEvent) => setNombreEjercicio(e.detail.value!)}
+              onIonInput={(e: CustomEvent) => setNombreEjercicio(e.detail.value!)}
             />
           </IonItem>
 
@@ -131,7 +131,7 @@ const RegistroEjercicios: React.FC<RegistroEjerciciosProps> = ({ pruebas, setPru
             <IonInput
               type="number"
               value={repeticiones}
-              onIonChange={(e: CustomEvent) => setRepeticiones(Number(e.detail.value!))}
+              onIonInput={(e: CustomEvent) => setRepeticiones(Number(e.detail.value!))}
             />
           </IonItem>
 
@@ -140,7 +140,7 @@ const RegistroEjercicios: React.FC<RegistroEjerciciosProps> = ({ pruebas, setPru
             <IonInput
               type="text"
               value={tipoEjercicio}
-              onIonChange={(e: CustomEvent) => setTipoEjercicio(e.detail.value!)}
+              onIonInput={(e: CustomEvent) => setTipoEjercicio(e.detail.value!)}
             />
           </IonItem>
 
@@ -149,7 +149,7 @@ const RegistroEjercicios: React.FC<RegistroEjerciciosProps> = ({ pruebas, setPru
             <IonInput
               type="text"
               value={explicacion}
-              onIonChange={(e: CustomEvent) => setExplicacion(e.detail.value!)}
+              onIonInput={(e: CustomEvent) => setExplicacion(e.detail.value!)}
             />
           </IonItem>
 
@@ -158,7 +158,7 @@ const RegistroEjercicios: React.FC<RegistroEjerciciosProps> = ({ pruebas, setPru
             <IonInput
               type="text"
               value={recomendaciones}
-              onIonChange={(e: CustomEvent) => setRecomendaciones(e.detail.value!)}
+              onIonInput={(e: CustomEvent) => setRecomendaciones(e.detail.value!)}
             />
           </IonItem>
 

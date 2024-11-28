@@ -108,14 +108,14 @@ const Page1: React.FC = () => {
             <IonInput
               placeholder="Nombre de la prueba"
               value={newItemName}
-              onIonChange={(e: CustomEvent) => setNewItemName(e.detail.value!)}
+              onIonInput={(e: CustomEvent) => setNewItemName(e.detail.value!)}
             />
           </IonItem>
           <IonItem>
             <IonInput
               placeholder="Descripción de la prueba"
               value={newItemDescription}
-              onIonChange={(e: CustomEvent) => setNewItemDescription(e.detail.value!)}
+              onIonInput={(e: CustomEvent) => setNewItemDescription(e.detail.value!)}
             />
           </IonItem>
 
