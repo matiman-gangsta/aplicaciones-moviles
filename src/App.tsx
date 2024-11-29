@@ -52,6 +52,7 @@ import '@ionic/react/css/palettes/dark.system.css';
 /* Theme variables */
 import './theme/variables.css';
 import NombresPage from './pages/test_bbdd';
+import EjerciciosPrueba from './pages/ejercicios';
 
 setupIonicReact({
   swipeBackEnabled :false
@@ -100,6 +101,8 @@ const App: React.FC = () => {
               <Route path="/registro-personal" component={RegistroPersonal} exact={true} />
               <Route path="/test_bbdd" component={Tab2} exact={true} />
               <Route path="/entrenamiento" component={entrenamiento} exact={true} />
+              <Route path="/pruebas/:idPrueba/ejercicios" component={EjerciciosPrueba} />
+
 
             </IonRouterOutlet>
 
