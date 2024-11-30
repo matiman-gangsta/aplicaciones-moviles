@@ -92,14 +92,14 @@ const RegistroEjercicios: React.FC<RegistroEjerciciosProps> = ({ pruebas, setPru
       setShowToast(true);
     }
   };
-  
 
   const irARecomendaciones = () => {
     history.push(`/recomendaciones/${recomendaciones}`);
   };
 
   const irAExplicaciones = () => {
-    history.push(`/explicaciones/${explicacion}`);
+    // Pasamos tanto explicacion como recomendaciones a la URL
+    history.push(`/explicaciones/${explicacion}/${recomendaciones}`);
   };
 
   return (
