@@ -11,7 +11,7 @@ const Login: React.FC = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://tu-backend.com/api/login', { username, password });
+      const response = await axios.post('https://api-fitapp-hmakejgwhgcqauhc.eastus2-01.azurewebsites.net/api/login2', { username, password });
       
       if (response.data.token) {
         // Guardar el token en el almacenamiento local (localStorage o sessionStorage)

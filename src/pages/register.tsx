@@ -28,7 +28,7 @@ const Register: React.FC = () => {
 
     try {
       // Enviar los datos al backend para registrar al nuevo usuario
-      const response = await axios.post('http://tu-backend.com/api/register', {
+      const response = await axios.post('https://api-fitapp-hmakejgwhgcqauhc.eastus2-01.azurewebsites.net/api/usuarios', {
         username,
         password,
         email,
