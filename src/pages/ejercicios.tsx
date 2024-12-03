@@ -17,12 +17,12 @@ import { home, star } from 'ionicons/icons';
 import axios from 'axios';
 
 const EjerciciosPrueba: React.FC = () => {
-  const { idPrueba } = useParams<{ idPrueba: string }>();
+  const {nombre} = useParams<{ nombre: string }>();
   const [ejercicios, setEjercicios] = useState<{ nombre: string; descripcion: string; }[]>([]);
 
   const fetchEjercicios = async () => {
     try {
-      const response = await axios.get(`https://api-fitapp-hmakejgwhgcqauhc.eastus2-01.azurewebsites.net/api/ejercicios/${idPrueba}`);
+      const response = await axios.get(`https://api-fitapp-hmakejgwhgcqauhc.eastus2-01.azurewebsites.net/api/ejercicios/${nombre}`);
       setEjercicios(response.data);
     } catch (error) {
       console.error('Error al obtener los ejercicios:', error);
@@ -31,7 +31,7 @@ const EjerciciosPrueba: React.FC = () => {
 
   useEffect(() => {
     fetchEjercicios();
-  }, [idPrueba]);
+  }, [nombre]);
 
   return (
     <IonPage>
