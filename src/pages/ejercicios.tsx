@@ -46,8 +46,8 @@ const EjerciciosPrueba: React.FC = () => {
       </IonHeader>
       <IonContent className="ion-padding">
         <IonList>
-          {ejercicios.map((ejercicio, index) => (
-            <IonItem key={index}>
+          {ejercicios.map((ejercicio) => (
+            <IonItem key={ejercicio.id}>
               <IonIcon icon={star} slot="start" />
               <IonLabel>
               <h2>{ejercicio.nombre}</h2>
