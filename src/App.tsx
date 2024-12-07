@@ -108,7 +108,7 @@ const MainContent: React.FC<{ pruebas: Prueba[]; setPruebas: React.Dispatch<Reac
         <Route path="/registro-personal" component={RegistroPersonal} exact={true} />
         <Route path="/test_bbdd" component={Tab2} exact={true} />
         <Route path="/entrenamiento" component={entrenamiento} exact={true} />
-        <Route path="/pruebas/:idPrueba/ejercicios" component={EjerciciosPrueba} />
+        <Route path="/listadopruebas/:id" component={EjerciciosPrueba} />
       </IonRouterOutlet>
 
       {/* IonTabBar se oculta en las páginas de login y register */}
