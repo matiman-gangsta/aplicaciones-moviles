@@ -59,9 +59,10 @@ const Page1: React.FC = () => {
     }
   };
 
-  const handleNavigate = (idPrueba: number) => {
+  const handleNavigate = async (idPrueba: number) => {
     history.push(`/pruebas/${idPrueba}/ejercicios`);
   };
+
 
   useEffect(() => {
     fetchItems();
