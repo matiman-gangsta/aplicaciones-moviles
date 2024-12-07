@@ -17,12 +17,21 @@ import { home, star } from 'ionicons/icons';
 import axios from 'axios';
 
 const EjerciciosPrueba: React.FC = () => {
-  const {nombre} = useParams<{ nombre: string }>();
-  const [ejercicios, setEjercicios] = useState<{ nombre: string; descripcion: string; }[]>([]);
+  const { id } = useParams<{ id: string }>();
+  const [ejercicios, setEjercicios] = useState<{
+    id: number;
+    nombre: string;
+    repeticiones: number;
+    tipo: string;
+    explicacion: string;
+    recomendaciones: string;
+  }[]>([]);
 
   const fetchEjercicios = async () => {
     try {
-      const response = await axios.get(`https://api-fitapp-hmakejgwhgcqauhc.eastus2-01.azurewebsites.net/api/ejercicios/${nombre}`);
+      const response = await axios.get(
+        `https://api-fitapp-hmakejgwhgcqauhc.eastus2-01.azurewebsites.net/api/pruebas/${id}/ejercicios`
+      );
       setEjercicios(response.data);
     } catch (error) {
       console.error('Error al obtener los ejercicios:', error);
@@ -31,7 +40,7 @@ const EjerciciosPrueba: React.FC = () => {
 
   useEffect(() => {
     fetchEjercicios();
-  }, [nombre]);
+  }, [id]);
 
   return (
     <IonPage>
@@ -46,12 +55,15 @@ const EjerciciosPrueba: React.FC = () => {
       </IonHeader>
       <IonContent className="ion-padding">
         <IonList>
-          {ejercicios.map((ejercicio, index) => (
-            <IonItem key={index}>
+          {ejercicios.map((ejercicio) => (
+            <IonItem key={ejercicio.id}>
               <IonIcon icon={star} slot="start" />
               <IonLabel>
                 <h2>{ejercicio.nombre}</h2>
-                <p>{ejercicio.descripcion}</p>
+                <p>Repeticiones: {ejercicio.repeticiones}</p>
+                <p>Tipo: {ejercicio.tipo}</p>
+                <p>Explicación: {ejercicio.explicacion}</p>
+                <p>Recomendaciones: {ejercicio.recomendaciones}</p>
               </IonLabel>
             </IonItem>
           ))}

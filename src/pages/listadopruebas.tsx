@@ -60,7 +60,7 @@ const Page1: React.FC = () => {
   };
 
   const handleNavigate = (idPrueba: number) => {
-    history.push(`/pruebas/${idPrueba}/ejercicios`);
+    history.push(`/listadopruebas/${idPrueba}`);
   };
 
   useEffect(() => {
