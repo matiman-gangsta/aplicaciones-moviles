@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import {
   IonContent,
   IonHeader,
@@ -17,8 +17,9 @@ import { home, star } from 'ionicons/icons';
 import axios from 'axios';
 
 const EjerciciosPrueba: React.FC = () => {
-  const {id} = useParams<{ id: string }>();
+  const { id } = useParams<{ id: string }>();
   const [ejercicios, setEjercicios] = useState<{ id: number; nombre: string; repeticiones: number; tipo: string; explicacion: string; recomendaciones: string; }[]>([]);
+  const history = useHistory(); // Hook para navegación
 
   const fetchEjercicios = async () => {
     try {
@@ -32,6 +33,17 @@ const EjerciciosPrueba: React.FC = () => {
   useEffect(() => {
     fetchEjercicios();
   }, [id]);
+
+  const handleEjercicioClick = (ejercicio: { explicacion: string, recomendaciones: string }) => {
+    // Navegar a la página de Explicaciones, pasando los parámetros como estado
+    history.push({
+      pathname: `/explicaciones`,
+      state: {
+        explicacion: ejercicio.explicacion,
+        recomendaciones: ejercicio.recomendaciones
+      }
+    });
+  };
 
   return (
     <IonPage>
@@ -47,14 +59,13 @@ const EjerciciosPrueba: React.FC = () => {
       <IonContent className="ion-padding">
         <IonList>
           {ejercicios.map((ejercicio) => (
-            <IonItem key={ejercicio.id}>
+            <IonItem key={ejercicio.id} button onClick={() => handleEjercicioClick(ejercicio)}>
               <IonIcon icon={star} slot="start" />
               <IonLabel>
-              <h2>{ejercicio.nombre}</h2>
-                  <p><strong>Repeticiones:</strong> {ejercicio.repeticiones || 'N/A'}</p>
-                  <p><strong>Tipo:</strong> {ejercicio.tipo || 'N/A'}</p>
-                  <p><strong>Explicación:</strong> {ejercicio.explicacion || 'No especificada'}</p>
-                  <p><strong>Recomendaciones:</strong> {ejercicio.recomendaciones || 'Sin recomendaciones'}</p>
+                <h2>{ejercicio.nombre}</h2>
+                <p><strong>Repeticiones:</strong> {ejercicio.repeticiones || 'N/A'}</p>
+                <p><strong>Tipo:</strong> {ejercicio.tipo || 'N/A'}</p>
+
               </IonLabel>
             </IonItem>
           ))}

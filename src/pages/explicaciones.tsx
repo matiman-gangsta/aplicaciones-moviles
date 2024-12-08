@@ -1,12 +1,16 @@
 import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonIcon, IonMenuButton, IonButtons } from '@ionic/react';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import './explicaciones.css'; 
 import Breadcrumb from '../components/breadcrumb';
 import { home } from 'ionicons/icons';
 
 const Explicaciones: React.FC = () => {
-  const { explicacion, recomendaciones } = useParams<{ explicacion: string, recomendaciones: string }>();
+  const location = useLocation();
+  const state = location.state as { explicacion: string, recomendaciones: string } | undefined;
+
+  const explicacion = state?.explicacion || 'No disponible';
+  const recomendaciones = state?.recomendaciones || 'No disponibles';
 
   return (
     <IonPage>
