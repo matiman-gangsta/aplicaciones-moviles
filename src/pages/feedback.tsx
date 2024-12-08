@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
   IonContent,
   IonHeader,
@@ -20,9 +21,16 @@ interface Resultado {
   peso?: number;
 }
 
+
 const Feedback: React.FC = () => {
   const location = useLocation<{ resultados: Resultado[] }>();
   const resultados = location.state?.resultados || [];
+  const [ejerciciosDisponibles, setEjerciciosDisponibles] = useState<{ id: string; nombre: string }[]>([]);
+  const hora = new Date().toLocaleTimeString();
+  const obtenerNombreEjercicio = (id: string): string => {
+    const ejercicio = ejerciciosDisponibles.find((ej) => ej.id === id);
+    return ejercicio ? ejercicio.nombre : 'Desconocido';
+  };
 
   const calcularPorcentaje = (realizadas: number, objetivo: number): number => {
     if (objetivo === 0) return 0;
@@ -48,8 +56,24 @@ const Feedback: React.FC = () => {
 
       // Guardar en localStorage solo las nuevas que no existían
       localStorage.setItem('historialEvaluaciones', JSON.stringify([...historialFiltrado, ...nuevosResultados]));
+
     }
   }, [resultados]);
+
+  useEffect(() => {
+    const fetchEjercicios = async () => {
+      try {
+        const response = await axios.get('https://api-fitapp-hmakejgwhgcqauhc.eastus2-01.azurewebsites.net/api/ejercicios'); // Cambia la URL por la de tu API
+        setEjerciciosDisponibles(response.data);
+      } catch (error) {
+        console.error('Error al recuperar los ejercicios:', error);
+      }
+    };
+  
+    fetchEjercicios();
+    
+  }, []);
+
 
   return (
     <IonPage>

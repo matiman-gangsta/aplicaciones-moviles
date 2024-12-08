@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   IonContent,
   IonHeader,
@@ -20,6 +20,7 @@ import {
 import { useHistory } from 'react-router-dom'; // Importar useHistory para navegación
 import { home } from 'ionicons/icons';
 import Breadcrumb from '../components/breadcrumb';
+import axios from 'axios';
 
 interface Resultado {
   ejercicio: string;
@@ -28,13 +29,15 @@ interface Resultado {
   objetivoRepeticiones: number;
 }
 
-const ejerciciosDisponibles = [
-  { value: 'Flexiones', label: 'Flexiones' },
-  { value: 'Sentadillas', label: 'Sentadillas' },
-  { value: 'Peso Muerto', label: 'Peso Muerto' },
-  { value: 'Press de Banca', label: 'Press de Banca' },
-  // Agrega más ejercicios según sea necesario
-];
+interface Ejercicio {
+  id: string;
+  nombre: string;
+  repeticiones: number;
+  tipo: string;
+  explicacion: string;
+  recomendaciones: string;
+}
+
 
 const Entrenamiento: React.FC = () => {
   const [ejercicio, setEjercicio] = useState('');
@@ -42,7 +45,21 @@ const Entrenamiento: React.FC = () => {
   const [peso, setPeso] = useState<number | null>(null);
   const [objetivoRepeticiones, setObjetivoRepeticiones] = useState<number | null>(null);
   const [resultados, setResultados] = useState<Resultado[]>([]);
+  const [ejerciciosDisponibles, setEjerciciosDisponibles] = useState<Ejercicio[]>([]);
   const history = useHistory(); // Hook para manejar navegación
+
+  useEffect(() => {
+    const fetchEjercicios = async () => {
+      try {
+        const response = await axios.get('https://api-fitapp-hmakejgwhgcqauhc.eastus2-01.azurewebsites.net/api/ejercicios');
+        setEjerciciosDisponibles(response.data);
+      } catch (error) {
+        console.error('Error al recuperar los ejercicios:', error);
+      }
+    };
+
+    fetchEjercicios();
+  }, []);
 
   const onSubmit = () => {
     if (ejercicio && repeticiones !== null && objetivoRepeticiones !== null) {
@@ -84,11 +101,10 @@ const Entrenamiento: React.FC = () => {
             <IonSelect
               value={ejercicio}
               onIonChange={(e: CustomEvent) => setEjercicio(e.detail.value)}
-              
             >
               {ejerciciosDisponibles.map((ejercicio) => (
-                <IonSelectOption key={ejercicio.value} value={ejercicio.value}>
-                  {ejercicio.label}
+                <IonSelectOption key={ejercicio.id} value={ejercicio.nombre}>
+                  {ejercicio.nombre}
                 </IonSelectOption>
               ))}
             </IonSelect>

@@ -231,19 +231,7 @@ const RegistroEjercicios: React.FC<RegistroEjerciciosProps> = ({ pruebas, setPru
           <IonButton expand="full" onClick={registrarEjercicio}>
             Registrar Ejercicio
           </IonButton>
-
-          <IonButton expand="full" onClick={irARecomendaciones}>
-            Ver Recomendaciones
-          </IonButton>
-
-          <IonButton expand="full" onClick={irAExplicaciones}>
-            Ver Explicaciones
-          </IonButton>
-
-          <IonButton expand="full" onClick={mostrarDatos}>
-             Mostrar Datos en Prompt
-          </IonButton>
-
+          
           <IonToast
             isOpen={showToast}
             onDidDismiss={() => setShowToast(false)}
