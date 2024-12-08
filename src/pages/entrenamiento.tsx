@@ -7,6 +7,8 @@ import {
   IonToolbar,
   IonItem,
   IonLabel,
+  IonSelect,
+  IonSelectOption,
   IonInput,
   IonButton,
   IonList,
@@ -25,6 +27,14 @@ interface Resultado {
   peso?: number;
   objetivoRepeticiones: number;
 }
+
+const ejerciciosDisponibles = [
+  { value: 'Flexiones', label: 'Flexiones' },
+  { value: 'Sentadillas', label: 'Sentadillas' },
+  { value: 'Peso Muerto', label: 'Peso Muerto' },
+  { value: 'Press de Banca', label: 'Press de Banca' },
+  // Agrega más ejercicios según sea necesario
+];
 
 const Entrenamiento: React.FC = () => {
   const [ejercicio, setEjercicio] = useState('');
@@ -70,12 +80,18 @@ const Entrenamiento: React.FC = () => {
         <Breadcrumb />
         <form onSubmit={(e) => { e.preventDefault(); onSubmit(); }}>
           <IonItem>
-            <IonLabel position="floating">Ejercicio</IonLabel>
-            <IonInput
+            <IonLabel>Ejercicio</IonLabel>
+            <IonSelect
               value={ejercicio}
-              onIonInput={(e: CustomEvent) => setEjercicio(e.detail.value!)}
-              required
-            />
+              onIonChange={(e: CustomEvent) => setEjercicio(e.detail.value)}
+              
+            >
+              {ejerciciosDisponibles.map((ejercicio) => (
+                <IonSelectOption key={ejercicio.value} value={ejercicio.value}>
+                  {ejercicio.label}
+                </IonSelectOption>
+              ))}
+            </IonSelect>
           </IonItem>
 
           <IonItem>
