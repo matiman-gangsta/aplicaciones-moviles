@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { IonPage, IonContent, IonInput, IonButton, IonItem, IonLabel, IonText, IonToast } from '@ionic/react';
 import axios from 'axios'; // Asegúrate de instalar axios: npm install axios
-import './login.css'; 
+import './login.css';
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState<string>('');
@@ -9,7 +9,22 @@ const Login: React.FC = () => {
   const [showToast, setShowToast] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
 
+  const isUsernameValid = username.length >= 4;
+  const isPasswordValid = password.length >= 8;
+
   const handleLogin = async () => {
+    if (!isUsernameValid) {
+      setToastMessage('El usuario debe tener al menos 4 caracteres.');
+      setShowToast(true);
+      return;
+    }
+
+    if (!isPasswordValid) {
+      setToastMessage('La contraseña debe tener al menos 8 caracteres.');
+      setShowToast(true);
+      return;
+    }
+
     try {
       const response = await axios.post('https://api-fitapp-hmakejgwhgcqauhc.eastus2-01.azurewebsites.net/api/login2', { username, password });
       
@@ -21,7 +36,7 @@ const Login: React.FC = () => {
       }
     } catch (error) {
       console.error('Error al hacer login:', error);
-      setToastMessage('Usuario o contraseña incorrectos');
+      setToastMessage('Usuario o contraseña incorrectos.');
       setShowToast(true);
     }
   };
@@ -40,6 +55,11 @@ const Login: React.FC = () => {
               onIonInput={(e: CustomEvent) => setUsername(e.detail.value!)}
             />
           </IonItem>
+          {!isUsernameValid && username !== '' && (
+            <IonText color="danger" className="validation-message">
+              El usuario debe tener al menos 4 caracteres.
+            </IonText>
+          )}
 
           <IonItem>
             <IonLabel position="floating">Contraseña</IonLabel>
@@ -50,13 +70,18 @@ const Login: React.FC = () => {
               onIonInput={(e: CustomEvent) => setPassword(e.detail.value!)}
             />
           </IonItem>
+          {!isPasswordValid && password !== '' && (
+            <IonText color="danger" className="validation-message">
+              La contraseña debe tener al menos 8 caracteres.
+            </IonText>
+          )}
 
-          <IonButton expand="block" onClick={handleLogin}>
+          <IonButton expand="block" onClick={handleLogin} disabled={!isUsernameValid || !isPasswordValid}>
             Ingresar
           </IonButton>
 
           <IonText className="ion-text-center">
-            <p>Aun no tienes una cuenta? <a href="/register">Regístrate</a></p>
+            <p>Aún no tienes una cuenta? <a href="/register">Regístrate</a></p>
           </IonText>
 
           <IonToast

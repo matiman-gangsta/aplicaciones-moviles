@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { IonPage, IonContent, IonInput, IonButton, IonItem, IonLabel, IonText, IonToast } from '@ionic/react';
 import axios from 'axios';
-import './login.css'; 
+import './login.css';
 
 const Register: React.FC = () => {
   const [username, setUsername] = useState<string>('');
@@ -11,17 +11,41 @@ const Register: React.FC = () => {
   const [showToast, setShowToast] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
 
+  const isUsernameValid = username.length >= 4;
+  const isPasswordValid = password.length >= 8;
+  const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
   const handleRegister = async () => {
     // Validar que las contraseñas coincidan
     if (password.trim() !== confirmPassword.trim()) {
-        setToastMessage('Las contraseñas no coinciden');
-        setShowToast(true);
-        return;
-      }   
+      setToastMessage('Las contraseñas no coinciden');
+      setShowToast(true);
+      return;
+    }
 
     // Validar campos vacíos
     if (!username || !password || !email) {
       setToastMessage('Por favor, completa todos los campos');
+      setShowToast(true);
+      return;
+    }
+
+    // Validar que el usuario y la contraseña sean válidos
+    if (!isUsernameValid) {
+      setToastMessage('El usuario debe tener al menos 4 caracteres');
+      setShowToast(true);
+      return;
+    }
+
+    if (!isPasswordValid) {
+      setToastMessage('La contraseña debe tener al menos 8 caracteres');
+      setShowToast(true);
+      return;
+    }
+
+    // Validar el correo electrónico
+    if (!isEmailValid) {
+      setToastMessage('Correo electrónico inválido');
       setShowToast(true);
       return;
     }
@@ -52,6 +76,8 @@ const Register: React.FC = () => {
       <IonContent className="ion-padding login-content">
         <div className="login-container">
           <h2 className="login-title">Registro</h2>
+          
+          {/* Campo de nombre de usuario */}
           <IonItem>
             <IonLabel position="floating">Usuario</IonLabel>
             <IonInput
@@ -61,7 +87,13 @@ const Register: React.FC = () => {
               onIonInput={(e: CustomEvent) => setUsername(e.detail.value!)}
             />
           </IonItem>
+          {!isUsernameValid && username !== '' && (
+            <IonText color="danger" className="validation-message">
+              El usuario debe tener al menos 4 caracteres.
+            </IonText>
+          )}
 
+          {/* Campo de correo electrónico */}
           <IonItem>
             <IonLabel position="floating">Correo Electrónico</IonLabel>
             <IonInput
@@ -71,33 +103,43 @@ const Register: React.FC = () => {
               onIonInput={(e: CustomEvent) => setEmail(e.detail.value!)}
             />
           </IonItem>
+          {!isEmailValid && email !== '' && (
+            <IonText color="danger" className="validation-message">
+              Correo electrónico inválido.
+            </IonText>
+          )}
 
+          {/* Campo de contraseña */}
           <IonItem>
             <IonLabel position="floating">Contraseña</IonLabel>
             <IonInput
               type="password"
               value={password}
               placeholder="Ingrese su contraseña..."
-              clearOnEdit= {false}
+              clearOnEdit={false}
               onIonInput={(e: CustomEvent) => setPassword(e.detail.value!)}
             />
           </IonItem>
+          {!isPasswordValid && password !== '' && (
+            <IonText color="danger" className="validation-message">
+              La contraseña debe tener al menos 8 caracteres.
+            </IonText>
+          )}
 
+          {/* Campo de confirmar contraseña */}
           <IonItem>
             <IonLabel position="floating">Confirmar Contraseña</IonLabel>
             <IonInput
               type="password"
-              value={confirmPassword}  // El valor debe estar vinculado al estado confirmPassword
+              value={confirmPassword}
               placeholder="Confirme su contraseña..."
-              clearOnEdit= {false}
-              onIonInput={(e: CustomEvent) => {
-                setConfirmPassword(e.detail.value!);  // Actualiza el estado al primer intento
-              }}
+              clearOnEdit={false}
+              onIonInput={(e: CustomEvent) => setConfirmPassword(e.detail.value!)}
             />
           </IonItem>
 
-
-          <IonButton expand="block" onClick={handleRegister}>
+          {/* Botón de registro */}
+          <IonButton expand="block" onClick={handleRegister} disabled={!isUsernameValid || !isPasswordValid || !isEmailValid}>
             Registrar
           </IonButton>
 
@@ -105,6 +147,7 @@ const Register: React.FC = () => {
             <p>¿Ya tienes una cuenta? <a href="/login">Inicia sesión</a></p>
           </IonText>
 
+          {/* Mensajes de error */}
           <IonToast
             isOpen={showToast}
             onDidDismiss={() => setShowToast(false)}
